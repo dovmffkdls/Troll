@@ -1,0 +1,19 @@
+[remap]
+
+importer="importer.scml"
+type="PackedScene"
+path="res://.import/6004_rabbits.scml-f45dac7aea4ae7e8e9a4320b990bb5d5.scn"
+
+[deps]
+
+source_file="res://96000_rabbits/6004_rabbits.scml"
+dest_files=[ "res://.import/6004_rabbits.scml-f45dac7aea4ae7e8e9a4320b990bb5d5.scn" ]
+
+[params]
+
+playback_speed=3
+z_as_relative=true
+loop_animations=true
+optimize_for_blends=true
+rest_pose_animation=""
+reparenting_solution="instance per parent"
