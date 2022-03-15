@@ -5,6 +5,7 @@ using UnityEngine;
 public class DataTable
 {
     public virtual void Load(List<Dictionary<string, object>> _datas) { }
+    public virtual void Load(List<string> _datas) { }
 
     /// <summary>
     /// Int 값 취득
@@ -33,5 +34,9 @@ public class DataTable
         }
 
         return resultValue;
+    }
+    public bool GetBoolValue(string value)
+    {
+        return GetIntValue(value) == 1;
     }
 }

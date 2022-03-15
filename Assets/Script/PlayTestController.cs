@@ -11,7 +11,8 @@ public class PlayTestController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        ExpTable expTable = CSVDataManager.Instance.expTable;
+
     }
 
     public void PlayToggleValueChange(bool value)
