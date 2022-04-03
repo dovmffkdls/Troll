@@ -1,12 +1,13 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class AniListTable : DataTable
 {
-    public Dictionary<int, List<AniListData>> dataDic = new Dictionary<int, List<AniListData>>();
+    public Dictionary<int, AniListData> dataDic = new Dictionary<int, AniListData>();
 
-    List<AniListData> aniDataList = new List<AniListData>();
+    public List<AniListData> aniDataList = new List<AniListData>();
 
     public override void Load(List<string> _datas)
     {
@@ -16,7 +17,6 @@ public class AniListTable : DataTable
 
             string keyValue = splitValue[0].ToString();
 
-            
 
             for (int i = 1; i < splitValue.Count; i++)
             {
@@ -73,12 +73,33 @@ public class AniListTable : DataTable
             }
         }
     }
+
+    /// <summary>
+    /// 정보 리스트 취득
+    /// </summary>
+    /// <param name="status"> 0 = 트롤 정보 리스트 , 1 = 몬스터 정보 리스트 </param>
+    public List<AniListData> GetListData(int status)
+    {
+        List<AniListData> resultDataList = new List<AniListData>();
+
+        //트롤 정보 리스트 취득
+        if (status == 0)
+        {
+            resultDataList = aniDataList.Where(data => data.pcId < 5000).ToList();
+        }
+        else
+        {
+            resultDataList = aniDataList.Where(data => data.pcId >= 5000).ToList();
+        }
+
+        return resultDataList;
+    }
 }
 
 [System.Serializable]
 public class AniListData
 {
-    /// <summary> ��ȣ </summary>
+    /// <summary> 번호 </summary>
     public int pcId = 0;
 
     public int motionId = 0;

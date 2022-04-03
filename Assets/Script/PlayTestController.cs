@@ -6,9 +6,14 @@ using UnityEngine.UI;
 public class PlayTestController : MonoBehaviour
 {
     [SerializeField] BGMoveHelper bgMoveHelper;
+
+    [SerializeField] RectTransform chaParant;
+    [SerializeField] List<Animator> playerAnimObjList = new List<Animator>();
     [SerializeField] Animator chaAnim;
-    //[SerializeField] EnumyController enumyController;
     [SerializeField] Animator enumyAnim;
+
+    private List<AniListData> playerDataList = new List<AniListData>();
+    [SerializeField] PlayerSelectItem playerSelectItemPrefab;
 
     float enumyCreateDelay = 3;
 
@@ -23,10 +28,54 @@ public class PlayTestController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ExpTable expTable = CSVDataManager.Instance.expTable;
+        PlayerListSet();
         chaAnim.Play("01_walk");
         bgMoveHelper.BGMoveSet(true);
         enumyAnim.gameObject.SetActive(false);
+    }
+
+    void PlayerListSet()
+    {
+        playerDataList = CSVDataManager.Instance.aniListTable.GetListData(0);
+
+        foreach (var data in playerDataList)
+        {
+            PlayerSelectItem playerSelectItem = Instantiate(playerSelectItemPrefab, playerSelectItemPrefab.transform.parent);
+            playerSelectItem.AniListDataSet(data);
+            playerSelectItem.clickEvent = ChangePlayerCha;
+            playerSelectItem.gameObject.SetActive(true);
+        }
+    }
+
+    public void ChangePlayerCha(AniListData data)
+    {
+        Animator currentAnim = null;
+
+        foreach (var playerAnimObj in playerAnimObjList)
+        {
+            string pcid = playerAnimObj.name.Split('_')[0];
+
+            if (pcid == data.pcId.ToString())
+            {
+                currentAnim = playerAnimObj;
+            }
+        }
+
+        if (currentAnim != null)
+        {
+            if (chaAnim != null)
+            {
+                Destroy(chaAnim.gameObject);
+            }
+
+            Animator newAnimator = Instantiate(currentAnim, chaParant);
+            newAnimator.transform.localPosition = new Vector3(-45, -30, 0);
+            newAnimator.transform.localScale = new Vector3(-1, 1, 1);
+
+            chaAnim = newAnimator;
+
+            chaAnim.Play("01_walk");
+        }
     }
 
     public void PlayToggleValueChange(bool value)
@@ -36,11 +85,12 @@ public class PlayTestController : MonoBehaviour
         bgMoveHelper.BGMoveSet(value);
     }
 
+    
+
     // Update is called once per frame
     void Update()
     {
         EnumyStatusCheck();
-        
     }
 
     void EnumyStatusCheck() 
@@ -91,6 +141,7 @@ public class PlayTestController : MonoBehaviour
             enumyAttackOn = false;
             enumyAnim.gameObject.SetActive(false);
             chaAnim.Play("01_walk");
+            attackCnt = 0;
         }
 
         yield return null;
