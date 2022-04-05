@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
     bool attackOn = false;
     float attackDelay = 1;
 
+    private SpriteRenderer weaponRenderer = null;
+
     private void Awake()
     {
         anim = GetComponent<Animator>();
@@ -20,6 +22,53 @@ public class Player : MonoBehaviour
     public void Init(AniListData animData)
     {
         this.animData = animData;
+        WeaponRendererSet();
+    }
+
+    void WeaponRendererSet()
+    {
+        string objName = string.Empty;
+
+        switch (animData.motionId)
+        {
+            case 1000:
+                objName = "club";
+                break;
+            case 1100:
+                objName = "swords_01";
+                break;
+        }
+
+        SpriteRenderer originWeaponRenderer = null;
+
+        foreach (var renderer in transform.GetComponentsInChildren<SpriteRenderer>())
+        {
+            if (renderer.name == objName)
+            {
+                originWeaponRenderer = renderer;
+                break;
+            }
+        }
+
+        if (originWeaponRenderer != null)
+        {
+            weaponRenderer = Instantiate(originWeaponRenderer, originWeaponRenderer.transform.parent);
+            weaponRenderer.transform.localPosition = new Vector3(3, 0, 0);
+            weaponRenderer.transform.localRotation = Quaternion.Euler(0, 0, 180);
+
+            originWeaponRenderer.gameObject.SetActive(false);
+        }
+    }
+
+    public void WeaponSpriteSet(Sprite weaponSprite)
+    {
+        if (weaponRenderer == null)
+            return;
+
+        weaponRenderer.sprite = weaponSprite;
+        weaponRenderer.flipX = true;
+
+        weaponRenderer.transform.localPosition = new Vector3(3, 0, 0);
     }
 
     private void Update()

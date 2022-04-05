@@ -5,14 +5,19 @@ using UnityEngine.UI;
 
 public class PlayTestController : MonoBehaviour
 {
+    [SerializeField] StageController stageController;
+
     [SerializeField] PlayerSelectItem playerSelectItemPrefab;
     [SerializeField] PlayerSelectItem enumySelectItemPrefab;
+    [SerializeField] PlayerSelectItem weaponSelectItemPrefab;
 
-    [SerializeField] StageController stageController;
+    [SerializeField] List<Sprite> weaponSpriteList = new List<Sprite>();
+    int selectWeaponIndex = 0;
 
     // Start is called before the first frame update
     void Start()
     {
+        WeaponListSet();
         PlayerListSet();
         EnumyListSet();
     }
@@ -25,11 +30,17 @@ public class PlayTestController : MonoBehaviour
         {
             PlayerSelectItem playerSelectItem = Instantiate(playerSelectItemPrefab, playerSelectItemPrefab.transform.parent);
             playerSelectItem.AniListDataSet(data);
-            playerSelectItem.clickEvent = stageController.ChangePlayerCha;
+            playerSelectItem.clickEvent = PlayerSelectOn;
             playerSelectItem.gameObject.SetActive(true);
         }
 
         stageController.ChangePlayerCha(playerDataList[0]);
+    }
+
+    void PlayerSelectOn(AniListData data)
+    {
+        stageController.ChangePlayerCha(data);
+        WeaponSelectOn();
     }
 
     void EnumyListSet()
@@ -43,5 +54,29 @@ public class PlayTestController : MonoBehaviour
             playerSelectItem.clickEvent = stageController.CreateEmumy;
             playerSelectItem.gameObject.SetActive(true);
         }
+    }
+
+    void WeaponListSet()
+    {
+        for (int i = 0; i < weaponSpriteList.Count; i++)
+        {
+            PlayerSelectItem playerSelectItem = Instantiate(weaponSelectItemPrefab, weaponSelectItemPrefab.transform.parent);
+
+            AniListData data = new AniListData();
+            data.pcId = i;
+            data.pcNameId = weaponSpriteList[i].name;
+            playerSelectItem.WeaponDataSet(data);
+            playerSelectItem.clickEvent = (aniData) =>
+            {
+                selectWeaponIndex = aniData.pcId;
+                WeaponSelectOn();
+            };
+            playerSelectItem.gameObject.SetActive(true);
+        }
+    }
+
+    void WeaponSelectOn()
+    {
+        ChaObjManager.Instance.GetPlayer().WeaponSpriteSet(weaponSpriteList[selectWeaponIndex]);
     }
 }

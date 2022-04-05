@@ -21,6 +21,12 @@ public class PlayerSelectItem : MonoBehaviour
         nameText.text = string.Format("{0} {1}", animData.pcId, animData.pcNameId);
     }
 
+    public void WeaponDataSet(AniListData animData)
+    {
+        this.animData = animData;
+        nameText.text = animData.pcNameId;
+    }
+
     public void BtnClick()
     {
         if (clickEvent != null)
