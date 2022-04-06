@@ -6,14 +6,21 @@ using UnityEngine.UI;
 
 public class PlayerSelectItem : MonoBehaviour
 {
-    private AniListData animData;
-    public UnityAction<AniListData> clickEvent;
+    public AniListData animData;
+    public MobBData mobBData;
+    public UnityAction<PlayerSelectItem> clickEvent;
     [SerializeField] Text nameText;
 
     public void AniListDataSet(AniListData animData)
     {
         this.animData = animData;
         TextReset();
+    }
+
+    public void MobBDataSet(MobBData mobBData)
+    {
+        this.mobBData = mobBData;
+        nameText.text = mobBData.id.ToString();
     }
 
     void TextReset()
@@ -31,7 +38,7 @@ public class PlayerSelectItem : MonoBehaviour
     {
         if (clickEvent != null)
         {
-            clickEvent(animData);
+            clickEvent(this);
         }
     }
 }
