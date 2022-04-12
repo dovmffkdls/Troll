@@ -38,13 +38,15 @@ public class ChaObjManager : MonoSingleton<ChaObjManager>
             newAnimator.transform.localPosition = new Vector3(-100, 0, 0);
             newAnimator.transform.localScale = new Vector3(-1, 1, 1);
 
+            PCData pcData = CSVDataManager.Instance.pcTable.GetData(data.pcId);
             Player player = newAnimator.gameObject.AddComponent<Player>();
-            player.Init(data);
+            player.Init(pcData);
+
             this.player = player;
         }
     }
 
-    public void CreateEnumy(AniListData data)
+    public void CreateEnumy(AniListData aniData , MobBData mobBData)
     {
         Animator currentAnim = null;
 
@@ -52,7 +54,7 @@ public class ChaObjManager : MonoSingleton<ChaObjManager>
         {
             string pcid = enumyAnimObj.name.Split('_')[0];
 
-            if (pcid == data.pcId.ToString())
+            if (pcid == aniData.pcId.ToString())
             {
                 currentAnim = enumyAnimObj;
             }
@@ -69,7 +71,7 @@ public class ChaObjManager : MonoSingleton<ChaObjManager>
             newAnimator.Play("01_walk");
 
             EnumyAI enumyAI = newAnimator.gameObject.AddComponent<EnumyAI>();
-            enumyAI.Init(data);
+            enumyAI.Init(mobBData);
             enumyAnimList.Add(enumyAI);
         }
     }

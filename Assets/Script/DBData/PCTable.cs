@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class PCTable : DataTable
 {
-    public Dictionary<int, PCData> dataDic = new Dictionary<int, PCData>();
+    public List<PCData> dataList = new List<PCData>();
 
     public override void Load(List<Dictionary<string, object>> _datas)
     {
@@ -38,8 +39,13 @@ public class PCTable : DataTable
             info.motionId = GetIntValue(data["motionId"].ToString());
             info.hpPosition = GetIntValue(data["hpPosition"].ToString());
 
-            dataDic.Add(info.id, info);
+            dataList.Add(info);
         }
+    }
+
+    public PCData GetData(int pcId , int star = 1)
+    {
+        return dataList.FirstOrDefault(data => data.pcId == pcId && data.star == star);
     }
 }
 

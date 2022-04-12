@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnumyAI : MonoBehaviour
 {
     private Animator anim;
-    private AniListData animData;
+    private MobBData mobBData;
 
     public EnumyStatus enumyStatus = EnumyStatus.None;
 
@@ -19,9 +19,10 @@ public class EnumyAI : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-    public void Init(AniListData animData)
+    public void Init(MobBData mobBData)
     {
-        this.animData = animData;
+        this.mobBData = mobBData;
+        hp = this.mobBData.hp;
     }
 
     // Start is called before the first frame update

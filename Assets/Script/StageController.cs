@@ -18,9 +18,9 @@ public class StageController : MonoBehaviour
         chaManager.ChangePlayerCha(data);
     }
 
-    public void CreateEmumy(AniListData data)
+    public void CreateEmumy(AniListData aniData , PlayerSelectItem selectItem)
     {
-        chaManager.CreateEnumy(data);
+        chaManager.CreateEnumy(aniData , selectItem.mobBData);
     }
 
     // Update is called once per frame

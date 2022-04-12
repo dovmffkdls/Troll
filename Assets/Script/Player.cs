@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     private Animator anim;
-    private AniListData animData;
+    private PCData pcData;
 
     public PlayerStatus playerStatus = PlayerStatus.None;
 
@@ -19,9 +19,9 @@ public class Player : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-    public void Init(AniListData animData)
+    public void Init(PCData pcData)
     {
-        this.animData = animData;
+        this.pcData = pcData;
         WeaponRendererSet();
     }
 
@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
     {
         string objName = string.Empty;
 
-        switch (animData.motionId)
+        switch (pcData.motionId)
         {
             case 1000:
                 objName = "club";
@@ -169,7 +169,8 @@ public class Player : MonoBehaviour
         {
             foreach (var attackTarget in attackTargetList)
             {
-                attackTarget.DamageOn();
+                int attackRanValue = Random.Range(pcData.attackMin, pcData.attackMax);
+                attackTarget.DamageOn(attackRanValue);
             }
         }
 

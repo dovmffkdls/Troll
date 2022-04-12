@@ -111,8 +111,6 @@ public class PlayTestController : MonoBehaviour
     {
         List<MobBData> mobBDataList = CSVDataManager.Instance.mobBTable.dataDic.Values.ToList();
 
-        Debug.LogWarning(mobBDataList.Count);
-
         foreach (var data in mobBDataList)
         {
             PlayerSelectItem playerSelectItem = Instantiate(mobbSelectItemPrefab, mobbSelectItemPrefab.transform.parent);
@@ -124,6 +122,6 @@ public class PlayTestController : MonoBehaviour
 
     void MobbSelectOn(PlayerSelectItem selectItem)
     {
-        stageController.CreateEmumy(selectEnumyItem.animData);
+        stageController.CreateEmumy(selectEnumyItem.animData, selectItem);
     }
 }
