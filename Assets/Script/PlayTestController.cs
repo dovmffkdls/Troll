@@ -23,11 +23,13 @@ public class PlayTestController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        WeaponListSet();
-        PlayerListSet();
-        EnumyListSet();
-        selectEnumyItem.clickEvent = (data) => enumyScrollRect.gameObject.SetActive(true);
-        MobbListSet();
+        CSVDataManager.Instance.pcTable = null;
+
+        //WeaponListSet();
+        //PlayerListSet();
+        //EnumyListSet();
+        //selectEnumyItem.clickEvent = (data) => enumyScrollRect.gameObject.SetActive(true);
+        //MobbListSet();
     }
 
     void PlayerListSet()
@@ -109,7 +111,7 @@ public class PlayTestController : MonoBehaviour
 
     void MobbListSet() 
     {
-        List<MobBData> mobBDataList = CSVDataManager.Instance.mobBTable.dataDic.Values.ToList();
+        List<MobBData> mobBDataList = CSVDataManager.Instance.mobBTable.dataList;
 
         foreach (var data in mobBDataList)
         {

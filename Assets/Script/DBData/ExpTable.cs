@@ -4,33 +4,19 @@ using UnityEngine;
 
 public class ExpTable : DataTable
 {
-    public Dictionary<int, ExpData> dataDic = new Dictionary<int, ExpData>();
+    public List<ExpData> dataList = new List<ExpData>();
 
-    public override void Load(List<Dictionary<string, object>> _datas)
+    public void Load(List<ExpData> dataList)
     {
-        var dataEnumerator = _datas.GetEnumerator();
-
-        while (dataEnumerator.MoveNext())
-        {
-            var data = dataEnumerator.Current;
-
-            ExpData info = new ExpData();
-
-            info.expId = GetIntValue(data["exp"].ToString());
-            info.exp = GetIntValue(data["exp"].ToString());
-            info.gold = GetIntValue(data["gold"].ToString());
-            info.rewardId = GetIntValue(data["rewardId"].ToString());
-
-            dataDic.Add(info.expId,info);
-        }
+        this.dataList = dataList;
     }
 }
 
 [System.Serializable]
 public class ExpData
 {
-    public int expId = 0;
-    public int exp = 0;
-    public int gold = 0;
-    public int rewardId = 0;
+    public int ExpId = 0;
+    public int Exp = 0;
+    public int Gold = 0;
+    public int RewardId = 0;
 }

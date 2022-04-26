@@ -20,7 +20,7 @@ public class PlayerSelectItem : MonoBehaviour
     public void MobBDataSet(MobBData mobBData)
     {
         this.mobBData = mobBData;
-        nameText.text = mobBData.id.ToString();
+        nameText.text = mobBData.Id.ToString();
     }
 
     void TextReset()

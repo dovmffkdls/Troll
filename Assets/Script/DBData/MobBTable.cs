@@ -4,68 +4,45 @@ using UnityEngine;
 
 public class MobBTable : DataTable
 {
-    public Dictionary<int, MobBData> dataDic = new Dictionary<int, MobBData>();
+    public List<MobBData> dataList = new List<MobBData>();
 
-    public override void Load(List<Dictionary<string, object>> _datas)
+    public void Load(List<MobBData> dataList)
     {
-        var dataEnumerator = _datas.GetEnumerator();
-
-        while (dataEnumerator.MoveNext())
-        {
-            var data = dataEnumerator.Current;
-
-            MobBData info = new MobBData();
-
-            info.id = GetIntValue(data["id"].ToString());
-            info.type = GetIntValue(data["type"].ToString());
-            info.fsm = GetIntValue(data["fsm"].ToString());
-            info.holyType = GetIntValue(data["holyType"].ToString());
-            info.star = GetIntValue(data["star"].ToString());
-            info.hp = GetIntValue(data["hp"].ToString());
-            info.hpRecovery = GetIntValue(data["hpRecovery"].ToString());
-            info.attackMin = GetIntValue(data["attackMin"].ToString());
-            info.attackMax = GetIntValue(data["attackMax"].ToString());
-            info.longAttackMin = GetIntValue(data["longAttackMin"].ToString());
-            info.longAttackMax = GetIntValue(data["longAttackMax"].ToString());
-            info.criRate = GetIntValue(data["criRate"].ToString());
-            info.criAttack = GetIntValue(data["criAttack"].ToString());
-            info.delayBeforeAttack = GetIntValue(data["delayBeforeAttack"].ToString());
-            info.delayAfterAttack = GetIntValue(data["delayAfterAttack"].ToString());
-            info.meeleDefense = GetIntValue(data["meeleDefense"].ToString());
-            info.criDefense = GetIntValue(data["criDefense"].ToString());
-            info.goldMin = GetIntValue(data["goldMin"].ToString());
-            info.goldMax = GetIntValue(data["goldMax"].ToString());
-            info.expMin = GetIntValue(data["expMin"].ToString());
-            info.expMax = GetIntValue(data["expMax"].ToString());
-            info.dropRewardId = GetIntValue(data["dropRewardId"].ToString());
-
-            dataDic.Add(info.id, info);
-        }
+        this.dataList = dataList;
     }
 }
 [System.Serializable]
 public class MobBData
 {
-    public int id = 0;
-    public int type = 0;
-    public int fsm = 0;
-    public int holyType = 0;
-    public int star = 0;
-    public int hp = 0;
-    public int hpRecovery = 0;
-    public int attackMin = 0;
-    public int attackMax = 0;
-    public int longAttackMin = 0;
-    public int longAttackMax = 0;
-    public int criRate = 0;
-    public int criAttack = 0;
-    public int delayBeforeAttack = 0;
-    public int delayAfterAttack = 0;
-    public int meeleDefense = 0;
-    public int criDefense = 0;
-    public int goldMin = 0;
-    public int goldMax = 0;
-    public int expMin = 0;
-    public int expMax = 0;
-    public int dropRewardId = 0;
+    public int Id = 0;
+    public int Type = 0;
+    public int Fsm = 0;
+    public int Holy = 0;
+    public int Star = 0;
+    public int Hp = 0;
+    public int AtkMin = 0;
+    public int AtkMax = 0;
+    public int CriRate = 0;
+    public int CriAtk = 0;
+    public int Pen = 0;
+    public int AtkAdd = 0;
+    public int DmgReductionFree = 0;
+    public int PowerLight = 0;
+    public int PowerLightDef = 0;
+    public int PowerDark = 0;
+    public int PowerDarkDef = 0;
+    public int PowerFire = 0;
+    public int PowerFireDef = 0;
+    public int PowerSea = 0;
+    public int PowerSeaDef = 0;
+    public int PowerAgility = 0;
+    public int Def = 0;
+    public int AtkSpeed = 0;
+    public int DelayBeforeAtk = 0;
+    public int DelayAfterAtk = 0;
+    public int GoldMin = 0;
+    public int GoldMax = 0;
+    public int ExpMin = 0;
+    public int ExpMax = 0;
+    public int DropRewardId = 0;
 }

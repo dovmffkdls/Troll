@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
     {
         string objName = string.Empty;
 
-        switch (pcData.motionId)
+        switch (pcData.MotionId)
         {
             case 1000:
                 objName = "club";
@@ -169,7 +169,7 @@ public class Player : MonoBehaviour
         {
             foreach (var attackTarget in attackTargetList)
             {
-                int attackRanValue = Random.Range(pcData.attackMin, pcData.attackMax);
+                int attackRanValue = Random.Range(pcData.Atk1, pcData.Atk2);
                 attackTarget.DamageOn(attackRanValue);
             }
         }

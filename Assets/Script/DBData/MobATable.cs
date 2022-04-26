@@ -4,48 +4,26 @@ using UnityEngine;
 
 public class MobATable : DataTable
 {
-    public Dictionary<int, MobAData> dataDic = new Dictionary<int, MobAData>();
+    public List<MobAData> dataList = new List<MobAData>();
 
-    public override void Load(List<Dictionary<string, object>> _datas)
+    public void Load(List<MobAData> dataList)
     {
-        var dataEnumerator = _datas.GetEnumerator();
-
-        while (dataEnumerator.MoveNext())
-        {
-            var data = dataEnumerator.Current;
-
-            MobAData info = new MobAData();
-
-            info.id = GetIntValue(data["id"].ToString());
-            info.mobId = GetIntValue(data["mobId"].ToString());
-            info.motionId = GetIntValue(data["motionId"].ToString());
-            info.mobNameId = data["mobNameId"].ToString();
-            info.mobExplainId = data["mobExplainId"].ToString();
-            info.type = GetIntValue(data["type"].ToString());
-            info.boss = GetIntValue(data["boss"].ToString());
-            info.fsm = GetIntValue(data["fsm"].ToString());
-            info.scale = GetIntValue(data["scale"].ToString());
-            info.movingSpeed = GetIntValue(data["movingSpeed"].ToString());
-            info.attackRange = GetIntValue(data["attackRange"].ToString());
-            info.hpPosition = GetIntValue(data["hpPosition"].ToString());
-
-            dataDic.Add(info.id, info);
-        }
+        this.dataList = dataList;
     }
 }
 [System.Serializable]
 public class MobAData
 {
-    public int id = 0;
-    public int mobId = 0;
-    public int motionId = 0;
-    public string mobNameId = string.Empty;
-    public string mobExplainId = string.Empty;
-    public int type = 0;
-    public int boss = 0;
-    public int fsm = 0;
-    public int scale = 0;
-    public int movingSpeed = 0;
-    public int attackRange = 0;
-    public int hpPosition = 0;
+    public int Id = 0;
+    public int MobGId = 0;
+    public string MobNameId = string.Empty;
+    public string MobExplainId = string.Empty;
+    public int Type = 0;
+    public int Boss = 0;
+    public int Fsm = 0;
+    public int Holy = 0;
+    public int Scale = 0;
+    public int MotionId = 0;
+    public int HpBar = 0;
+    public int AtkRange = 0;
 }

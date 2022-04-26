@@ -7,70 +7,58 @@ public class PCTable : DataTable
 {
     public List<PCData> dataList = new List<PCData>();
 
-    public override void Load(List<Dictionary<string, object>> _datas)
+    public void Load(List<PCData> dataList)
     {
-        var dataEnumerator = _datas.GetEnumerator();
-
-        while (dataEnumerator.MoveNext())
-        {
-            var data = dataEnumerator.Current;
-
-            PCData info = new PCData();
-
-            info.id = GetIntValue(data["id"].ToString());
-            info.pcId = GetIntValue(data["pcId"].ToString());
-            info.pcNameId = data["pcNameId"].ToString();
-            info.pcExplainId = GetIntValue(data["pcExplainId"].ToString());
-            info.star = GetIntValue(data["star"].ToString());
-            info.grade = GetIntValue(data["grade"].ToString());
-            info.scale = GetIntValue(data["scale"].ToString());
-            info.holyType = GetIntValue(data["holyType"].ToString());
-            info.hp = GetIntValue(data["hp"].ToString());
-            info.hpRecovery = GetIntValue(data["hpRecovery"].ToString());
-            info.attackMin = GetIntValue(data["attackMin"].ToString());
-            info.attackMax = GetIntValue(data["attackMax"].ToString());
-            info.attackSpeed = GetIntValue(data["attackSpeed"].ToString());
-            info.delayAfterAttack = GetIntValue(data["delayAfterAttack"].ToString());
-            info.criRate = GetIntValue(data["criRate"].ToString());
-            info.criAttack = GetIntValue(data["criAttack"].ToString());
-            info.meeleDefense = GetIntValue(data["meeleDefense"].ToString());
-            info.criDefense = GetIntValue(data["criDefense"].ToString());
-            info.movingSpeed = GetIntValue(data["movingSpeed"].ToString());
-            info.motionId = GetIntValue(data["motionId"].ToString());
-            info.hpPosition = GetIntValue(data["hpPosition"].ToString());
-
-            dataList.Add(info);
-        }
+        this.dataList = dataList;
     }
 
     public PCData GetData(int pcId , int star = 1)
     {
-        return dataList.FirstOrDefault(data => data.pcId == pcId && data.star == star);
+        return dataList.FirstOrDefault(data => data.PcGId == pcId && data.Star == star);
     }
 }
 
 [System.Serializable]
 public class PCData
 {
-    public int id = 0;
-    public int pcId = 0;
-    public string pcNameId = string.Empty;
-    public int pcExplainId = 0;
-    public int star = 0;
-    public int grade = 0;
-    public int scale = 0;
-    public int holyType = 0;
-    public int hp = 0;
-    public int hpRecovery = 0;
-    public int attackMin = 0;
-    public int attackMax = 0;
-    public int attackSpeed = 0;
-    public int delayAfterAttack = 0;
-    public int criRate = 0;
-    public int criAttack = 0;
-    public int meeleDefense = 0;
-    public int criDefense = 0;
-    public int movingSpeed = 0;
-    public int motionId = 0;
-    public int hpPosition = 0;
+    public int Id = 0;
+    public int PcGId = 0;
+    public int PcNameId = 0;
+    public int PcExplainId = 0;
+    public int Grade = 0;
+    public int Star = 0;
+    public int EnchantLv = 0;
+    public int Holy = 0;
+    public int InherenceId = 0;
+    public int RetentionId = 0;
+    public int Scale = 0;
+    public int MotionId = 0;
+    public int HpBar = 0;
+    public int Hp = 0;
+    public int ForceRate = 0;
+    public int LethalAtkRate = 0;
+    public int Atk1 = 0;
+    public int Atk2 = 0;
+    public int CriRate = 0;
+    public int CriAtk = 0;
+    public int AtkRange = 0;
+    public int PowerLightRate = 0;
+    public int powerLightDef = 0;
+    public int PowerDarkRate = 0;
+    public int powerDarkDef = 0;
+    public int PowerFireRate = 0;
+    public int PowerFireDef = 0;
+    public int PowerSeaRate = 0;
+    public int PowerSeaDef = 0;
+    public int Def = 0;
+    public int AtkSpeedRate = 0;
+    public int MovingSpeed = 0;
+    public int CastingSpeedRate = 0;
+    public int DmgReduction = 0;
+    public int GoldBonusRate = 0;
+    public int ExpBonusRate = 0;
+    public int SkillDmgRate = 0;
+    public int BossDmgRate = 0;
+    public int LvSafe = 0;
+    public int LvLimit = 0;
 }
