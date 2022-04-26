@@ -22,7 +22,7 @@ public class EnumyAI : MonoBehaviour
     public void Init(MobBData mobBData)
     {
         this.mobBData = mobBData;
-        hp = this.mobBData.hp;
+        hp = this.mobBData.Hp;
     }
 
     // Start is called before the first frame update
