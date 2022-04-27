@@ -29,6 +29,9 @@ public class Player : MonoBehaviour
     {
         string objName = string.Empty;
 
+        if (pcData == null)
+            return;
+        
         switch (pcData.MotionId)
         {
             case 1000:

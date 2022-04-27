@@ -164,7 +164,7 @@ public class CSVReader
             header[i] = header[i].Replace("\"", "");
         }
 
-        for (var i = 3; i < lines.Length; i++)
+        for (var i = 1; i < lines.Length; i++)
         {
             T classData = new T();
 

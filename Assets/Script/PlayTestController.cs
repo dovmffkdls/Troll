@@ -23,13 +23,11 @@ public class PlayTestController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        CSVDataManager.Instance.pcTable = null;
-
-        //WeaponListSet();
-        //PlayerListSet();
-        //EnumyListSet();
-        //selectEnumyItem.clickEvent = (data) => enumyScrollRect.gameObject.SetActive(true);
-        //MobbListSet();
+        WeaponListSet();
+        PlayerListSet();
+        EnumyListSet();
+        selectEnumyItem.clickEvent = (data) => enumyScrollRect.gameObject.SetActive(true);
+        MobbListSet();
     }
 
     void PlayerListSet()

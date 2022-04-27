@@ -35,12 +35,14 @@ public class AccountData
     public int CriAtk = 0;
     public int AtkAb = 0;
     public int PowerLight = 0;
-
     public int PowerDark = 0;
-    public int PowerAgilityRate = 0;
-    public int PowerAuthorityRate = 0;
+    public int PowerFire = 0;
+    public int PowerSea = 0;
     public int GoldBonusRate = 0;
     public int ExpBonusRate = 0;
     public int SkillDmgRate = 0;
     public int BossDmgRate = 0;
+
+                                          
+
 }
