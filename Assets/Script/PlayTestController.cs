@@ -53,13 +53,15 @@ public class PlayTestController : MonoBehaviour
 
     void WeaponListSet()
     {
-        for (int i = 0; i < weaponSpriteList.Count; i++)
+        List<ItemBData> dataList = CSVDataManager.Instance.itemBTable.dataList;
+
+        for (int i = 0; i < dataList.Count; i++)
         {
             PlayerSelectItem playerSelectItem = Instantiate(weaponSelectItemPrefab, weaponSelectItemPrefab.transform.parent);
 
             AniListData data = new AniListData();
             data.pcId = i;
-            data.pcNameId = weaponSpriteList[i].name;
+            data.pcNameId = dataList[i].ItemaId.ToString();
             playerSelectItem.WeaponDataSet(data);
             playerSelectItem.clickEvent = (selectItem) =>
             {
@@ -72,7 +74,11 @@ public class PlayTestController : MonoBehaviour
 
     void WeaponSelectOn()
     {
-        ChaObjManager.Instance.GetPlayer().WeaponSpriteSet(weaponSpriteList[selectWeaponIndex]);
+        ItemBData itemBData = CSVDataManager.Instance.itemBTable.dataList[selectWeaponIndex];
+
+        Sprite sprite = weaponSpriteList.FirstOrDefault(data => data.name == itemBData.ItemaId.ToString());
+
+        ChaObjManager.Instance.GetPlayer().WeaponSet(itemBData,sprite);
     }
 
 

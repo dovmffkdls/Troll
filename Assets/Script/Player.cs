@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    private AccountData accountData;
     private Animator anim;
     private PCData pcData;
+    private ItemBData itemBData;
 
     public PlayerStatus playerStatus = PlayerStatus.None;
 
@@ -14,15 +16,150 @@ public class Player : MonoBehaviour
 
     private SpriteRenderer weaponRenderer = null;
 
+    private float maxHp = 0;
+    private float currentHp = 0;
+    private float hpRecoveryDelay = 1;
+
+    private float forceRate = 0;
+    private float lethalRate = 0;
+    private float lethalAtkRate = 0;
+
+    private float atkAb = 0;
+
+    HPUI hpUI = null;
+
     private void Awake()
     {
         anim = GetComponent<Animator>();
+
+        AccountDataSet();
+    }
+
+    void AccountDataSet() 
+    {
+        accountData = CSVDataManager.Instance.accountTable.dataList[0];
     }
 
     public void Init(PCData pcData)
     {
         this.pcData = pcData;
+        HPSet();
+        ForceRateSet();
+        LethalRateSet();
+        LethalAtkRateSet();
         WeaponRendererSet();
+    }
+
+    void HPSet()
+    {
+        maxHp = accountData.Hp + pcData.Hp;
+
+        //아이템 정보가 있다면
+        if (itemBData != null)
+        {
+            maxHp += itemBData.Hp;
+        }
+
+        currentHp = maxHp;
+
+        HPReset();
+    }
+
+    void HPReset()
+    {
+        if (hpUI == null)
+        {
+            hpUI = Instantiate(Resources.Load<HPUI>("UI/HPUI"), transform);
+            hpUI.transform.localPosition = new Vector3(0, 2.5f, 0);
+            Vector3 localScale = hpUI.transform.localScale;
+            localScale.x *= -1;
+            hpUI.transform.localScale = localScale;
+        }
+
+        float sliderValue = currentHp == 0 ? 0 : (float)currentHp / maxHp;
+        hpUI.SliderValueSet(sliderValue);
+    }
+
+    public void DamageOn(int attackValue = 5)
+    {
+        DamageUISet(attackValue);
+
+        currentHp -= attackValue;
+
+        if (currentHp <= 0)
+        {
+            currentHp = 0;
+            StartCoroutine(DieAnimOn());
+        }
+
+        HPReset();
+    }
+
+    void DamageUISet(int attackValue)
+    {
+        DamageUI damageUI = Instantiate(Resources.Load<DamageUI>("UI/DamageUI"), transform);
+        damageUI.DamageSet(attackValue);
+
+        Vector3 localScale = damageUI.transform.localScale;
+        localScale.x *= -1;
+        damageUI.transform.localScale = localScale;
+    }
+
+    void ForceRateSet()
+    {
+        forceRate = accountData.ForceRate + pcData.ForceRate;
+    }
+
+    void LethalRateSet()
+    {
+        lethalRate = accountData.LethalRate;
+    }
+
+    void LethalAtkRateSet()
+    {
+        lethalAtkRate = accountData.LethalAtkRate + pcData.LethalAtkRate;
+    }
+
+    public int GetAtk() 
+    {
+        int resultAtk = accountData.Atk;
+
+        //PC 랜덤값 적용
+        resultAtk += Random.Range(pcData.Atk1, pcData.Atk2);
+
+        //Item 랜덤값 적용
+        if (itemBData != null)
+        {
+            resultAtk += Random.Range(itemBData.AtkMin, itemBData.AtkMax);
+        }
+        
+        //Skill 적용
+
+        //크리티컬 확률 계산
+        if (false)
+        {
+            //크리티컬 데미지 
+            int criRate = 1;
+            resultAtk *= criRate;
+        }
+
+        //LethalRate 확률 계산
+        if (false)
+        {
+            //크리티컬 데미지 
+            int lethalRate = 1;
+            resultAtk *= lethalRate;
+        }
+
+        return resultAtk;
+    }
+
+    /// <summary>
+    /// 절대 공격 수치 취득
+    /// </summary>
+    public int GetAtkAb()
+    {
+        return accountData.AtkAb;
     }
 
     void WeaponRendererSet()
@@ -63,8 +200,10 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void WeaponSpriteSet(Sprite weaponSprite)
+    public void WeaponSet(ItemBData itemBData ,Sprite weaponSprite)
     {
+        this.itemBData = itemBData;
+
         if (weaponRenderer == null)
             return;
 
@@ -72,11 +211,14 @@ public class Player : MonoBehaviour
         weaponRenderer.flipX = true;
 
         weaponRenderer.transform.localPosition = new Vector3(3, 0, 0);
+
+        HPSet();
     }
 
     private void Update()
     {
         StatusCheck();
+        HPRecoveryCheck();
     }
 
     void StatusCheck()
@@ -172,8 +314,7 @@ public class Player : MonoBehaviour
         {
             foreach (var attackTarget in attackTargetList)
             {
-                int attackRanValue = Random.Range(pcData.Atk1, pcData.Atk2);
-                attackTarget.DamageOn(attackRanValue);
+                attackTarget.DamageOn(GetAtk());
             }
         }
 
@@ -194,6 +335,43 @@ public class Player : MonoBehaviour
 
         attackOn = false;
     }
+
+    void HPRecoveryCheck()
+    {
+        hpRecoveryDelay -= Time.deltaTime;
+
+        if (hpRecoveryDelay < 0)
+        {
+            hpRecoveryDelay = 1;
+            HPRecoveryOn();
+        }
+    }
+
+    /// <summary>
+    /// 체력 회복
+    /// </summary>
+    void HPRecoveryOn()
+    {
+        AddHp(accountData.HpRecovery);
+    }
+
+    public void AddHp(float addValue)
+    {
+        currentHp = Mathf.Min(currentHp + addValue, maxHp);
+        HPReset();
+    }
+
+    public IEnumerator DieAnimOn()
+    {
+        playerStatus = PlayerStatus.Die;
+
+        anim.Play("50_die");
+
+        float delay = anim.GetCurrentAnimatorClipInfo(0).Length;
+
+        yield return new WaitForSeconds(delay);
+    }
+
 }
 
 public enum PlayerStatus 
