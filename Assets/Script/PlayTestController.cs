@@ -19,6 +19,7 @@ public class PlayTestController : MonoBehaviour
     private AniListData selectEnumyAniData = null;
     [SerializeField] PlayerSelectItem selectEnumyItem;
     [SerializeField] ScrollRect enumyScrollRect;
+    [SerializeField] InputField hpAddInput;
 
     // Start is called before the first frame update
     void Start()
@@ -129,5 +130,15 @@ public class PlayTestController : MonoBehaviour
     void MobbSelectOn(PlayerSelectItem selectItem)
     {
         stageController.CreateEmumy(selectEnumyItem.animData, selectItem);
+    }
+
+    public void HPAddBtnClick()
+    {
+        if (hpAddInput.text == string.Empty)
+            return;
+
+        int addHpValue = int.Parse(hpAddInput.text);
+
+        ChaObjManager.Instance.GetPlayer().AddHp(addHpValue);
     }
 }
