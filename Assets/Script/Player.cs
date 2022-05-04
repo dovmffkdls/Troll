@@ -113,9 +113,9 @@ public class Player : MonoBehaviour
         return accountData.LethalRate;
     }
 
-    int GetLethalAtkRate()
+    float GetLethalAtkRate()
     {
-        return accountData.LethalAtkRate + pcData.LethalAtkRate;
+        return (accountData.LethalAtkRate + pcData.LethalAtkRate) * 0.01f;
     }
 
     public float GetAtk() 
@@ -134,17 +134,29 @@ public class Player : MonoBehaviour
         //Skill 적용
 
         //크리티컬 확률 계산
-        if (false)
-        {
-            //크리티컬 데미지 
-            int criRate = 1;
-            resultAtk *= criRate;
-        }
+        resultAtk = resultAtk * GetCriResultRate();
 
         //LethalAtk 데미지 적용
-        resultAtk = resultAtk * GetLethalAtk();
+        resultAtk = resultAtk * GetLethalAtkResultRate();
 
         return resultAtk;
+    }
+
+    float GetCriResultRate()
+    {
+        float criRate = accountData.CriRate + pcData.CriRate;
+
+        float resultValue = 1;
+
+        //CriRate 확률 계산
+        if (Random.Range(0, criRate) <= criRate - 1)
+        {
+            float criAtk = accountData.CriAtk + pcData.CriAtk;
+            criAtk *= 0.01f;
+            resultValue += criAtk;
+        }
+
+        return resultValue;
     }
 
     /// <summary>
@@ -186,7 +198,7 @@ public class Player : MonoBehaviour
         return forceInHPValueList;
     }
 
-    float GetLethalAtk()
+    float GetLethalAtkResultRate()
     {
         float resultValue = 1;
 
@@ -205,12 +217,12 @@ public class Player : MonoBehaviour
                 //1번째 구간이라면
                 if (currentHp <= forceInHPValueList[0])
                 {
-                    resultValue = GetLethalAtkRate() * 1.5f;
+                    resultValue += GetLethalAtkRate() * 1.5f;
                 }
                 //2번째 구간이라면
                 else
                 {
-                    resultValue = GetLethalAtkRate();
+                    resultValue += GetLethalAtkRate();
                 }
             }
         }
