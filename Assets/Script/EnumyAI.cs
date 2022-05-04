@@ -12,8 +12,8 @@ public class EnumyAI : MonoBehaviour
     bool attackOn = false;
     float attackDelay = 2;
 
-    int maxHp = 10;
-    int currentHp = 10;
+    float maxHp = 10;
+    float currentHp = 10;
     HPUI hpUI = null;
 
     private void Awake()
@@ -136,7 +136,7 @@ public class EnumyAI : MonoBehaviour
     }
 
 
-    public void DamageOn(int attackValue = 5)
+    public void DamageOn(float attackValue = 5)
     {
         DamageUISet(attackValue);
 
@@ -153,7 +153,7 @@ public class EnumyAI : MonoBehaviour
         hpUI.SliderValueSet(sliderValue);
     }
 
-    void DamageUISet(int attackValue)
+    void DamageUISet(float attackValue)
     {
         DamageUI damageUI = Instantiate(Resources.Load<DamageUI>("UI/DamageUI"), transform);
         damageUI.DamageSet(attackValue);

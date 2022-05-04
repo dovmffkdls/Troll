@@ -20,17 +20,16 @@ public class Player : MonoBehaviour
     private float currentHp = 0;
     private float hpRecoveryDelay = 1;
 
-    private float forceRate = 0;
-    private float lethalRate = 0;
-    private float lethalAtkRate = 0;
-
     private float atkAb = 0;
 
     HPUI hpUI = null;
 
+    List<int> forceAreaRate = new List<int>();
+
     private void Awake()
     {
         anim = GetComponent<Animator>();
+        forceAreaRate = new List<int>() { 30, 30, 40 };
 
         AccountDataSet();
     }
@@ -44,9 +43,6 @@ public class Player : MonoBehaviour
     {
         this.pcData = pcData;
         HPSet();
-        ForceRateSet();
-        LethalRateSet();
-        LethalAtkRateSet();
         WeaponRendererSet();
     }
 
@@ -63,6 +59,8 @@ public class Player : MonoBehaviour
         currentHp = maxHp;
 
         HPReset();
+
+        hpUI.ForceAreaSet(GetForceInRate());
     }
 
     void HPReset()
@@ -105,24 +103,24 @@ public class Player : MonoBehaviour
         damageUI.transform.localScale = localScale;
     }
 
-    void ForceRateSet()
+    int GetForceRate()
     {
-        forceRate = accountData.ForceRate + pcData.ForceRate;
+        return accountData.ForceRate + pcData.ForceRate;
     }
 
-    void LethalRateSet()
+    int GetLethalRate()
     {
-        lethalRate = accountData.LethalRate;
+        return accountData.LethalRate;
     }
 
-    void LethalAtkRateSet()
+    int GetLethalAtkRate()
     {
-        lethalAtkRate = accountData.LethalAtkRate + pcData.LethalAtkRate;
+        return accountData.LethalAtkRate + pcData.LethalAtkRate;
     }
 
-    public int GetAtk() 
+    public float GetAtk() 
     {
-        int resultAtk = accountData.Atk;
+        float resultAtk = accountData.Atk;
 
         //PC 랜덤값 적용
         resultAtk += Random.Range(pcData.Atk1, pcData.Atk2);
@@ -143,15 +141,81 @@ public class Player : MonoBehaviour
             resultAtk *= criRate;
         }
 
-        //LethalRate 확률 계산
-        if (false)
-        {
-            //크리티컬 데미지 
-            int lethalRate = 1;
-            resultAtk *= lethalRate;
-        }
+        //LethalAtk 데미지 적용
+        resultAtk = resultAtk * GetLethalAtk();
 
         return resultAtk;
+    }
+
+    /// <summary>
+    /// 각 Force 구간 별 영역% 얻어오기
+    /// </summary>
+    /// <returns></returns>
+    List<float> GetForceInRate()
+    {
+        List<float> forceInRateList = new List<float>();
+
+        for (int i = 0; i < forceAreaRate.Count; i++)
+        {
+            float rate = (100 - GetForceRate()) * (forceAreaRate[i] / 100.0f);
+
+            if (i == 0)
+            {
+                rate += GetForceRate();
+            }
+            forceInRateList.Add(rate);
+        }
+
+        return forceInRateList;
+    }
+
+    /// <summary>
+    /// 각 Force 구간 별 체력 얻어오기
+    /// </summary>
+    List<float> GetForceInHPValue()
+    {
+        List<float> forceInRateList = GetForceInRate();
+        List<float> forceInHPValueList = new List<float>();
+
+        for (int i = 0; i < forceInRateList.Count; i++)
+        {
+            float resultValue = maxHp * forceInRateList[i] / 100.0f;
+            forceInHPValueList.Add(resultValue);
+        }
+
+        return forceInHPValueList;
+    }
+
+    float GetLethalAtk()
+    {
+        float resultValue = 1;
+
+        List<float> forceInHPValueList = GetForceInHPValue();
+
+        //3번째 구간이라면
+        if (currentHp >= maxHp - forceInHPValueList[2])
+        {
+            resultValue = 1;
+        }
+        else
+        {
+            //LethalRate 확률 계산
+            if (Random.Range( 0 , GetLethalRate()) <= GetLethalRate() -1)
+            {
+                //1번째 구간이라면
+                if (currentHp <= forceInHPValueList[0])
+                {
+                    resultValue = GetLethalAtkRate() * 1.5f;
+                }
+                //2번째 구간이라면
+                else
+                {
+                    resultValue = GetLethalAtkRate();
+                }
+            }
+        }
+
+        return resultValue;
     }
 
     /// <summary>

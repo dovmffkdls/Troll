@@ -8,9 +8,9 @@ public class DamageUI : MonoBehaviour
 {
     [SerializeField] Text text;
 
-    public void DamageSet(int value)
+    public void DamageSet(float value)
     {
-        text.text = value.ToString();
+        text.text = ((int)value).ToString();
 
         transform.localScale = Vector3.one * 0.1f;
         transform.localPosition = new Vector3(-1, 20, 0);
