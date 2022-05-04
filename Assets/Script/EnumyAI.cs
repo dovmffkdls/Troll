@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnumyAI : MonoBehaviour
 {
     private Animator anim;
-    private MobBData mobBData;
+    public MobBData mobBData;
 
     public EnumyStatus enumyStatus = EnumyStatus.None;
 

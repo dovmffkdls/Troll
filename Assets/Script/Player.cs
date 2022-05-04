@@ -118,7 +118,7 @@ public class Player : MonoBehaviour
         return (accountData.LethalAtkRate + pcData.LethalAtkRate) * 0.01f;
     }
 
-    public float GetAtk() 
+    public float GetAtk(MobBData mobBData) 
     {
         float resultAtk = accountData.Atk;
 
@@ -130,26 +130,34 @@ public class Player : MonoBehaviour
         {
             resultAtk += Random.Range(itemBData.AtkMin, itemBData.AtkMax);
         }
-        
+
         //Skill 적용
 
-        //크리티컬 확률 계산
-        resultAtk = resultAtk * GetCriResultRate();
+        //크리티컬 확률 적용
+        resultAtk *= GetCriResultRate();
 
         //LethalAtk 데미지 적용
-        resultAtk = resultAtk * GetLethalAtkResultRate();
+        resultAtk *= GetLethalAtkResultRate();
+
+        //AtkAb 적용
+        resultAtk *= GetAtkAbResultValue(mobBData);
+
+        //PowerAgility 적용
+        resultAtk *= GetPowerAgility();
 
         return resultAtk;
     }
 
     float GetCriResultRate()
     {
-        float criRate = accountData.CriRate + pcData.CriRate;
-
         float resultValue = 1;
 
         //CriRate 확률 계산
-        if (Random.Range(0, criRate) <= criRate - 1)
+        float criRate = accountData.CriRate + pcData.CriRate;
+        bool criOn = criRate >= 100 ? 
+                    true : Random.Range(0, 100) <= criRate - 1;
+
+        if(criOn)
         {
             float criAtk = accountData.CriAtk + pcData.CriAtk;
             criAtk *= 0.01f;
@@ -212,7 +220,11 @@ public class Player : MonoBehaviour
         else
         {
             //LethalRate 확률 계산
-            if (Random.Range( 0 , GetLethalRate()) <= GetLethalRate() -1)
+            float lethalRate = GetLethalRate();
+            bool lethalOn = lethalRate >= 100 ?
+                            true : Random.Range(0, 100) <= lethalRate - 1;
+
+            if (lethalOn)
             {
                 //1번째 구간이라면
                 if (currentHp <= forceInHPValueList[0])
@@ -230,12 +242,24 @@ public class Player : MonoBehaviour
         return resultValue;
     }
 
-    /// <summary>
-    /// 절대 공격 수치 취득
-    /// </summary>
-    public int GetAtkAb()
+    float GetAtkAbResultValue(MobBData mobBData)
     {
-        return accountData.AtkAb;
+        float resultValue = 1;
+
+        //절대 공격 수치
+        float atkAb = accountData.AtkAb;
+
+        //절대 공격 / ( 절대공격 + 몬스터 방어력 - 관통력)
+        resultValue = atkAb / (atkAb + (mobBData.Def));
+
+        return resultValue;
+    }
+
+    float GetPowerAgility()
+    {
+        float resultValue = 1;
+
+        return resultValue;
     }
 
     void WeaponRendererSet()
@@ -390,7 +414,7 @@ public class Player : MonoBehaviour
         {
             foreach (var attackTarget in attackTargetList)
             {
-                attackTarget.DamageOn(GetAtk());
+                attackTarget.DamageOn(GetAtk(attackTarget.mobBData));
             }
         }
 
