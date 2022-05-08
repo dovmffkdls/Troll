@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using DG.Tweening;
 
 public class EnumyAI : MonoBehaviour
 {
@@ -48,12 +49,12 @@ public class EnumyAI : MonoBehaviour
     {
         if (enumyStatus == EnumyStatus.None)
         {
-            enumyStatus = EnumyStatus.Move;
+            enumyStatus = EnumyStatus.PlayerWait;
             anim.Play("01_walk");
-        }
-        else if (enumyStatus == EnumyStatus.Move)
-        {
-            MoveCheck();
+
+            transform
+                .DOLocalMoveX(0, 10)
+                .SetEase(Ease.Linear);
         }
         else if (enumyStatus == EnumyStatus.PlayerWait)
         {
@@ -65,23 +66,6 @@ public class EnumyAI : MonoBehaviour
         }
     }
 
-    void MoveCheck()
-    {
-        Vector2 currentPos = transform.localPosition;
-
-        if (currentPos.x > 0f)
-        {
-            currentPos.x -= 0.1f;
-        }
-        else
-        {
-            currentPos.x = 0f;
-            enumyStatus = EnumyStatus.PlayerWait;
-        }
-
-        transform.localPosition = currentPos;
-    }
-
     void PlayerCheck()
     {
         Player player = ChaObjManager.Instance.GetPlayer();
@@ -90,7 +74,7 @@ public class EnumyAI : MonoBehaviour
 
         float distance = Vector3.Distance(currentPos, player.transform.localPosition);
 
-        if (distance <= 20)
+        if (distance <= 25)
         {
             enumyStatus = EnumyStatus.Attack;
             attackDelay = 0;

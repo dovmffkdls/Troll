@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -25,6 +26,8 @@ public class Player : MonoBehaviour
     HPUI hpUI = null;
 
     List<int> forceAreaRate = new List<int>();
+
+    Tween moveTween;
 
     private void Awake()
     {
@@ -348,18 +351,8 @@ public class Player : MonoBehaviour
         {
             anim.Play("01_walk");
 
-            Vector2 currentPos = transform.localPosition;
-
-            if (currentPos.x < -20)
-            {
-                currentPos.x += 0.1f;
-            }
-            else
-            {
-                currentPos.x = -20f;
-            }
-
-            transform.localPosition = currentPos;
+            if (moveTween == null)
+                moveTween = transform.DOLocalMoveX(-20, 5).SetEase(Ease.Linear);
         }
     }
 
