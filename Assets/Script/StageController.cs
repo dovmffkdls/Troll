@@ -15,12 +15,14 @@ public class StageController : MonoBehaviour
 
     public void ChangePlayerCha(AniListData data)
     {
-        chaManager.ChangePlayerCha(data);
+        PCData pcData = CSVDataManager.Instance.pcTable.GetData(data.pcId);
+        chaManager.ChangePlayerCha(pcData);
     }
 
     public void CreateEmumy(AniListData aniData , PlayerSelectItem selectItem)
     {
-        chaManager.CreateEnumy(aniData , selectItem.mobBData);
+        MobAData mpbaData = CSVDataManager.Instance.mobATable.GetDataFromMobGid(aniData.pcId);
+        chaManager.CreateEnumy(mpbaData, selectItem.mobBData);
     }
 
     // Update is called once per frame

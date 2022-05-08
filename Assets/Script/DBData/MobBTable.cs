@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class MobBTable : DataTable
 {
@@ -9,6 +10,10 @@ public class MobBTable : DataTable
     public void Load(List<MobBData> dataList)
     {
         this.dataList = dataList;
+    }
+    public MobBData GetData(int id)
+    {
+        return dataList.FirstOrDefault(data => data.Id == id);
     }
 }
 [System.Serializable]

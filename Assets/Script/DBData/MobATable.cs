@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class MobATable : DataTable
 {
@@ -10,6 +11,16 @@ public class MobATable : DataTable
     {
         this.dataList = dataList;
     }
+
+    public MobAData GetData(int id) 
+    {
+        return dataList.FirstOrDefault(data => data.Id == id);
+    }
+    public MobAData GetDataFromMobGid(int mobGid)
+    {
+        return dataList.FirstOrDefault(data => data.MobGId == mobGid);
+    }
+
 }
 [System.Serializable]
 public class MobAData

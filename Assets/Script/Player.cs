@@ -350,13 +350,13 @@ public class Player : MonoBehaviour
 
             Vector2 currentPos = transform.localPosition;
 
-            if (currentPos.x < -50)
+            if (currentPos.x < -20)
             {
                 currentPos.x += 0.1f;
             }
             else
             {
-                currentPos.x = -50f;
+                currentPos.x = -20f;
             }
 
             transform.localPosition = currentPos;

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.Events;
 
 public class ChaObjManager : MonoSingleton<ChaObjManager>
 {
@@ -13,7 +14,7 @@ public class ChaObjManager : MonoSingleton<ChaObjManager>
     private List<EnumyAI> enumyAnimList = new List<EnumyAI>();
     [SerializeField] List<Animator> enumyAnimObjList = new List<Animator>();
 
-    public void ChangePlayerCha(AniListData data)
+    public void ChangePlayerCha(PCData pcData)
     {
         Animator currentAnim = null;
 
@@ -21,7 +22,7 @@ public class ChaObjManager : MonoSingleton<ChaObjManager>
         {
             string pcid = playerAnimObj.name.Split('_')[0];
 
-            if (pcid == data.pcId.ToString())
+            if (pcid == pcData.PcGId.ToString())
             {
                 currentAnim = playerAnimObj;
             }
@@ -38,7 +39,6 @@ public class ChaObjManager : MonoSingleton<ChaObjManager>
             newAnimator.transform.localPosition = new Vector3(-100, 0, 0);
             newAnimator.transform.localScale = new Vector3(-1, 1, 1);
 
-            PCData pcData = CSVDataManager.Instance.pcTable.GetData(data.pcId);
             Player player = newAnimator.gameObject.AddComponent<Player>();
             player.Init(pcData);
 
@@ -46,7 +46,7 @@ public class ChaObjManager : MonoSingleton<ChaObjManager>
         }
     }
 
-    public void CreateEnumy(AniListData aniData , MobBData mobBData)
+    public void CreateEnumy(MobAData aniData , MobBData mobBData , UnityAction<EnumyAI> dieEvent = null)
     {
         Animator currentAnim = null;
 
@@ -54,7 +54,7 @@ public class ChaObjManager : MonoSingleton<ChaObjManager>
         {
             string pcid = enumyAnimObj.name.Split('_')[0];
 
-            if (pcid == aniData.pcId.ToString())
+            if (pcid == aniData.MobGId.ToString())
             {
                 currentAnim = enumyAnimObj;
             }
@@ -72,6 +72,7 @@ public class ChaObjManager : MonoSingleton<ChaObjManager>
 
             EnumyAI enumyAI = newAnimator.gameObject.AddComponent<EnumyAI>();
             enumyAI.Init(mobBData);
+            enumyAI.dieEventOn = dieEvent;
             enumyAnimList.Add(enumyAI);
         }
     }

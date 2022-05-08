@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EnumyAI : MonoBehaviour
 {
@@ -10,11 +11,13 @@ public class EnumyAI : MonoBehaviour
     public EnumyStatus enumyStatus = EnumyStatus.None;
 
     bool attackOn = false;
-    float attackDelay = 2;
+    float attackDelay = 0;
 
     float maxHp = 10;
     float currentHp = 10;
     HPUI hpUI = null;
+
+    public UnityAction<EnumyAI> dieEventOn;
 
     private void Awake()
     {
@@ -66,13 +69,13 @@ public class EnumyAI : MonoBehaviour
     {
         Vector2 currentPos = transform.localPosition;
 
-        if (currentPos.x > -35)
+        if (currentPos.x > 0f)
         {
             currentPos.x -= 0.1f;
         }
         else
         {
-            currentPos.x = -35f;
+            currentPos.x = 0f;
             enumyStatus = EnumyStatus.PlayerWait;
         }
 
@@ -166,6 +169,11 @@ public class EnumyAI : MonoBehaviour
         float delay = anim.GetCurrentAnimatorClipInfo(0).Length;
 
         yield return new WaitForSeconds(delay);
+
+        if (dieEventOn != null)
+        {
+            dieEventOn(this);
+        }
 
         ChaObjManager.Instance.RemoveEnumy(this);
     }
