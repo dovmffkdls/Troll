@@ -29,6 +29,8 @@ public class Player : MonoBehaviour
 
     Tween moveTween;
 
+    bool initMoveOn = false;
+
     private void Awake()
     {
         anim = GetComponent<Animator>();
@@ -351,8 +353,18 @@ public class Player : MonoBehaviour
         {
             anim.Play("01_walk");
 
-            if (moveTween == null)
-                moveTween = transform.DOLocalMoveX(-20, 5).SetEase(Ease.Linear);
+            if (moveTween == null) 
+            {
+                moveTween = transform
+                                .DOLocalMoveX(-20, 5)
+                                .SetEase(Ease.Linear)
+                                .OnComplete(()=> initMoveOn = true);
+            }
+
+            if (initMoveOn) 
+            {
+                GameDataManager.Instance.bgMove = true;
+            }
         }
     }
 
@@ -393,6 +405,7 @@ public class Player : MonoBehaviour
 
     IEnumerator EnumyAttackOn()
     {
+        GameDataManager.Instance.bgMove = false;
         attackOn = true;
 
         anim.Play("10_attack");

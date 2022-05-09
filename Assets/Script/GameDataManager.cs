@@ -7,6 +7,8 @@ public class GameDataManager : MonoSingleton<GameDataManager>
     public int selectStageId = 1;
     public PCData pcData;
 
+    public bool bgMove = false;
+
     protected override void Init()
     {
         base.Init();
