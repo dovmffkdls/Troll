@@ -3064,7 +3064,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2e3022580fbee04cbb88a793bf9c97e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bgMoveSpeed: 0.4
+  bgMoveSpeed: 0.2
   minXPos: -60
   resetPos: 125
 --- !u!1001 &309235387
@@ -4185,7 +4185,6 @@ MonoBehaviour:
   chaManager: {fileID: 1561808615}
   stageSlider: {fileID: 2035213138}
   stageNumText: {fileID: 1827948477}
-  bgMoveHelper: {fileID: 0}
 --- !u!1 &463156285
 GameObject:
   m_ObjectHideFlags: 0
@@ -8743,7 +8742,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2e3022580fbee04cbb88a793bf9c97e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bgMoveSpeed: 0.2
+  bgMoveSpeed: 0.1
   minXPos: -65
   resetPos: 118
 --- !u!1 &990610640
@@ -9441,7 +9440,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2e3022580fbee04cbb88a793bf9c97e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bgMoveSpeed: 0.4
+  bgMoveSpeed: 0.2
   minXPos: -60
   resetPos: 125
 --- !u!1 &1098967810
@@ -11633,7 +11632,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2e3022580fbee04cbb88a793bf9c97e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bgMoveSpeed: 0.6
+  bgMoveSpeed: 0.4
   minXPos: -40
   resetPos: 60
 --- !u!1 &1321469077
@@ -17196,7 +17195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2e3022580fbee04cbb88a793bf9c97e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bgMoveSpeed: 0.6
+  bgMoveSpeed: 0.4
   minXPos: -40
   resetPos: 60
 --- !u!1 &1921582323
@@ -18750,7 +18749,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2e3022580fbee04cbb88a793bf9c97e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bgMoveSpeed: 0.2
+  bgMoveSpeed: 0.1
   minXPos: -65
   resetPos: 118
 --- !u!1 &2065061091
