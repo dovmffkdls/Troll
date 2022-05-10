@@ -34,8 +34,6 @@ public class EnumyAI : MonoBehaviour
         hpUI =Instantiate(Resources.Load<HPUI>("UI/HPUI") , transform);
 
         Transform shadowImage = Instantiate(Resources.Load<Transform>("UI/ShadowImage"), transform);
-        
-
     }
 
     // Start is called before the first frame update
@@ -118,10 +116,14 @@ public class EnumyAI : MonoBehaviour
 
             yield return new WaitForSeconds(delay);
 
-            ChaObjManager.Instance.GetPlayer().DamageOn(GetAtk());
+            ChaObjManager.Instance.GetPlayer().DamageOn(GetAtk());   
         }
 
-        anim.Play("00_idle");
+        if (enumyStatus != EnumyStatus.Die)
+        {
+            anim.Play("00_idle");
+        }
+        
 
         attackOn = false;
     }

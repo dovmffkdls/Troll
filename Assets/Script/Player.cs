@@ -37,6 +37,8 @@ public class Player : MonoBehaviour
         forceAreaRate = new List<int>() { 30, 30, 40 };
 
         AccountDataSet();
+
+        Transform shadowImage = Instantiate(Resources.Load<Transform>("UI/ShadowImage"), transform);
     }
 
     void AccountDataSet() 
