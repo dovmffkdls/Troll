@@ -66,7 +66,9 @@ public class ChaObjManager : MonoSingleton<ChaObjManager>
 
             float yValue = Random.Range(-5, 5);
 
-            newAnimator.transform.localPosition = new Vector3(110, yValue, 0);
+            int xPos = Random.Range(80, 150);
+            
+            newAnimator.transform.localPosition = new Vector3(xPos, yValue, 0);
             newAnimator.transform.localScale = new Vector3(1, 1, 1);
             newAnimator.Play("01_walk");
 

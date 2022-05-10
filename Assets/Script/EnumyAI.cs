@@ -32,6 +32,10 @@ public class EnumyAI : MonoBehaviour
         currentHp = maxHp;
 
         hpUI =Instantiate(Resources.Load<HPUI>("UI/HPUI") , transform);
+
+        Transform shadowImage = Instantiate(Resources.Load<Transform>("UI/ShadowImage"), transform);
+        
+
     }
 
     // Start is called before the first frame update
@@ -52,8 +56,15 @@ public class EnumyAI : MonoBehaviour
             enumyStatus = EnumyStatus.PlayerWait;
             anim.Play("01_walk");
 
+            Vector2 targetPos = transform.localPosition;
+            targetPos.x = 0;
+
+            float distance = Vector2.Distance(targetPos, transform.localPosition);
+
+            float duration = distance / 22;
+
             transform
-                .DOLocalMoveX(0, 10)
+                .DOLocalMoveX(0, duration)
                 .SetEase(Ease.Linear);
         }
         else if (enumyStatus == EnumyStatus.PlayerWait)
