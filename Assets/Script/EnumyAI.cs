@@ -53,29 +53,33 @@ public class EnumyAI : MonoBehaviour
         {
             enumyStatus = EnumyStatus.PlayerWait;
             anim.Play("01_walk");
-
-            Vector2 targetPos = transform.localPosition;
-            targetPos.x = 0;
-
-            float distance = Vector2.Distance(targetPos, transform.localPosition);
-
-            float duration = distance / 22;
-
-            transform
-                .DOLocalMoveX(0, duration)
-                .SetEase(Ease.Linear);
         }
         else if (enumyStatus == EnumyStatus.PlayerWait)
         {
-            PlayerCheck();
+            if (PlayerCheck())
+            {
+                enumyStatus = EnumyStatus.Attack;
+                attackDelay = 0;
+            }
+            else 
+            {
+                EnumyMove();
+            }
         }
         else if (enumyStatus == EnumyStatus.Attack)
         {
             PlayerAttackDelayCehck();
         }
+        else if (enumyStatus == EnumyStatus.Die)
+        {
+            if (GameDataManager.Instance.bgMove) 
+            {
+                EnumyMove();
+            }
+        }
     }
 
-    void PlayerCheck()
+    bool PlayerCheck()
     {
         Player player = ChaObjManager.Instance.GetPlayer();
 
@@ -83,11 +87,12 @@ public class EnumyAI : MonoBehaviour
 
         float distance = Vector3.Distance(currentPos, player.transform.localPosition);
 
-        if (distance <= 25)
-        {
-            enumyStatus = EnumyStatus.Attack;
-            attackDelay = 0;
-        }
+        return distance <= 25;
+    }
+
+    void EnumyMove()
+    {
+        transform.Translate(Vector3.left * Time.deltaTime * 2);
     }
 
     void PlayerAttackDelayCehck()
