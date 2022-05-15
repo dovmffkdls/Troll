@@ -8,6 +8,7 @@ public class EnumyAI : MonoBehaviour
 {
     private Animator anim;
     public MobBData mobBData;
+    public BossBData bossBData;
 
     public EnumyStatus enumyStatus = EnumyStatus.None;
 
@@ -32,6 +33,23 @@ public class EnumyAI : MonoBehaviour
         currentHp = maxHp;
 
         hpUI =Instantiate(Resources.Load<HPUI>("UI/HPUI") , transform);
+        hpUI.transform.localPosition = new Vector3(0, 10, 0);
+
+        Transform shadowImage = Instantiate(Resources.Load<Transform>("UI/ShadowImage"), transform);
+    }
+
+    public void Init(BossBData bossBData)
+    {
+        this.bossBData = bossBData;
+        maxHp = this.bossBData.Hp;
+        currentHp = maxHp;
+
+        Vector3 localScale = transform.localScale;
+        localScale *= 1.5f;
+        transform.localScale = localScale;
+
+        hpUI = Instantiate(Resources.Load<HPUI>("UI/HPUI"), transform);
+        hpUI.transform.localPosition = new Vector3(0, 10, 0);
 
         Transform shadowImage = Instantiate(Resources.Load<Transform>("UI/ShadowImage"), transform);
     }
@@ -135,7 +153,19 @@ public class EnumyAI : MonoBehaviour
 
     int GetAtk()
     {
-        int damage = Random.Range(mobBData.AtkMin, mobBData.AtkMax);
+        int damage = 0;
+
+        if (mobBData != null)
+        {
+            damage = Random.Range(mobBData.AtkMin, mobBData.AtkMax);
+        }
+        else if (bossBData != null)
+        {
+            damage = Random.Range(bossBData.AtkMin, bossBData.AtkMax);
+        }
+
+        
+        
 
         return damage;
     }

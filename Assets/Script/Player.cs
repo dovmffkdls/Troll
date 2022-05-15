@@ -66,8 +66,6 @@ public class Player : MonoBehaviour
         currentHp = maxHp;
 
         HPReset();
-
-        hpUI.ForceAreaSet(GetForceInRate());
     }
 
     void HPReset()
@@ -75,7 +73,7 @@ public class Player : MonoBehaviour
         if (hpUI == null)
         {
             hpUI = Instantiate(Resources.Load<HPUI>("UI/HPUI"), transform);
-            hpUI.transform.localPosition = new Vector3(0, 2.5f, 0);
+            hpUI.transform.localPosition = new Vector3(-1, 22, 0);
             Vector3 localScale = hpUI.transform.localScale;
             localScale.x *= -1;
             hpUI.transform.localScale = localScale;
@@ -257,7 +255,10 @@ public class Player : MonoBehaviour
         float atkAb = accountData.AtkAb;
 
         //절대 공격 / ( 절대공격 + 몬스터 방어력 - 관통력)
-        resultValue = atkAb / (atkAb + (mobBData.Def));
+
+        float defValue = mobBData != null ? mobBData.Def : 0;
+
+        resultValue = atkAb / (atkAb + defValue);
 
         return resultValue;
     }

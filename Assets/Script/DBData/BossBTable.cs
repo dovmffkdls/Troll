@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class BossBTable : DataTable
 {
@@ -9,6 +10,10 @@ public class BossBTable : DataTable
     public void Load(List<BossBData> dataList)
     {
         this.dataList = dataList;
+    }
+    public BossBData GetData(int id)
+    {
+        return dataList.FirstOrDefault(data => data.Id == id);
     }
 }
 

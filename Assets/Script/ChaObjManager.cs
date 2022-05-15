@@ -79,10 +79,54 @@ public class ChaObjManager : MonoSingleton<ChaObjManager>
         }
     }
 
+    public void CreateBoss(MobAData aniData, BossBData bossBData, UnityAction<EnumyAI> dieEvent = null)
+    {
+        Animator currentAnim = null;
+
+        foreach (var enumyAnimObj in enumyAnimObjList)
+        {
+            string pcid = enumyAnimObj.name.Split('_')[0];
+
+            if (pcid == aniData.MobGId.ToString())
+            {
+                currentAnim = enumyAnimObj;
+            }
+        }
+
+        if (currentAnim != null)
+        {
+            Animator newAnimator = Instantiate(currentAnim, chaParant);
+
+            float yValue = Random.Range(-5, 5);
+
+            int xPos = Random.Range(80, 150);
+
+            newAnimator.transform.localPosition = new Vector3(xPos, yValue, 0);
+            newAnimator.transform.localScale = new Vector3(1, 1, 1);
+            newAnimator.Play("01_walk");
+
+            EnumyAI enumyAI = newAnimator.gameObject.AddComponent<EnumyAI>();
+            enumyAI.Init(bossBData);
+            enumyAI.dieEventOn = dieEvent;
+            enumyAnimList.Add(enumyAI);
+
+            Debug.LogWarning(enumyAI);
+        }
+    }
+
     public void RemoveEnumy(EnumyAI anim)
     {
         enumyAnimList.Remove(anim);
         Destroy(anim.gameObject);
+    }
+
+    public void AllRemoveEnumy()
+    {
+        foreach (var enumyAnim in enumyAnimList)
+        {
+            Destroy(enumyAnim.gameObject);
+        }
+        enumyAnimList.Clear();
     }
 
     public List<EnumyAI> GetEnumyList()

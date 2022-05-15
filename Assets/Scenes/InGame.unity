@@ -3027,7 +3027,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.6, y: -40.6}
+  m_AnchoredPosition: {x: 0, y: -40.6}
   m_SizeDelta: {x: 101, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &292588079
@@ -4230,6 +4230,11 @@ MonoBehaviour:
   chaManager: {fileID: 1561808615}
   stageSlider: {fileID: 2035213138}
   stageNumText: {fileID: 1827948477}
+  bossOnBtnSpriteList:
+  - {fileID: 21300000, guid: 49c05890c0c307c41912ea6c57b01c16, type: 3}
+  - {fileID: 21300000, guid: 84dbff08c640b6b4c83158459fc9da08, type: 3}
+  bossOnBtn: {fileID: 2142381673}
+  autoBossToggle: {fileID: 478200430}
 --- !u!1 &463156285
 GameObject:
   m_ObjectHideFlags: 0
@@ -4505,8 +4510,20 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
-  m_IsOn: 1
+      m_Calls:
+      - m_Target: {fileID: 459926500}
+        m_TargetAssemblyTypeName: InGameController, Assembly-CSharp
+        m_MethodName: BossOnCheck
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_IsOn: 0
 --- !u!1 &478848358
 GameObject:
   m_ObjectHideFlags: 0
@@ -8682,7 +8699,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1229454479}
-  - {fileID: 1561808614}
   - {fileID: 2043060377}
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -14471,6 +14487,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1561808614}
   - component: {fileID: 1561808615}
+  - component: {fileID: 1561808616}
   m_Layer: 5
   m_Name: ChaObjManager
   m_TagString: Untagged
@@ -14486,16 +14503,16 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1561808613}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.96045685}
-  m_LocalScale: {x: 0.009259259, y: 0.009259259, z: 0.009259259}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1499320223}
-  m_Father: {fileID: 975443309}
-  m_RootOrder: 1
+  m_Father: {fileID: 1902543211}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.0176795, y: -2.3690166}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1561808615
@@ -14603,6 +14620,27 @@ MonoBehaviour:
   - {fileID: 496128391413858198, guid: 7901241430617544f873b762b9fbde62, type: 3}
   - {fileID: 1773127994913787882, guid: ebd68d1cd751bea4f9c9f1d95af74ed9, type: 3}
   - {fileID: 5991884903258279797, guid: 9b1ab72bcc656ee47b442ab1534ec2d7, type: 3}
+--- !u!223 &1561808616
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1561808613}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
 --- !u!1001 &1569177560
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17282,7 +17320,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_TargetDisplay: 0
 --- !u!224 &1902543211
 RectTransform:
@@ -17300,6 +17338,7 @@ RectTransform:
   - {fileID: 1085782433}
   - {fileID: 963194228}
   - {fileID: 1891925610}
+  - {fileID: 1561808614}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -18661,7 +18700,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 975443309}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &2043060379
 Camera:
@@ -19852,7 +19891,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2142381671}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 459926500}
+        m_TargetAssemblyTypeName: InGameController, Assembly-CSharp
+        m_MethodName: BossStageOn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &1012647128931862225
 CanvasRenderer:
   m_ObjectHideFlags: 0

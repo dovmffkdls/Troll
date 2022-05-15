@@ -17,17 +17,23 @@ public class InGameController : MonoBehaviour
 
     [SerializeField] Text stageNumText;
 
+    [SerializeField] List<Sprite> bossOnBtnSpriteList = new List<Sprite>();
+    [SerializeField] Button bossOnBtn;
+    [SerializeField] Toggle autoBossToggle;
+
+    bool bossOn = false;
+
     // Start is called before the first frame update
     void Start()
     {
+        //캐릭터 세팅
+        chaManager.ChangePlayerCha(GameDataManager.Instance.pcData);
+
         StageSet();
     }
 
     void StageSet()
     {
-        //캐릭터 세팅
-        chaManager.ChangePlayerCha(GameDataManager.Instance.pcData);
-
         //스테이지 데이터 세팅
         int stageId = GameDataManager.Instance.selectStageId;
         mapBData = CSVDataManager.Instance.mapBTable.GetData(stageId);
@@ -37,8 +43,9 @@ public class InGameController : MonoBehaviour
 
         MobCreateDataSet();
 
-
         SliderSet();
+
+        BossOnBtnActiveOn();
     }
 
     void MobCreateDataSet()
@@ -70,7 +77,11 @@ public class InGameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        DelayCheck();
+        if (bossOn == false)
+        {
+            DelayCheck();
+        }
+        
     }
 
     void DelayCheck()
@@ -99,12 +110,12 @@ public class InGameController : MonoBehaviour
         int index = mobCreateDataList.FindIndex(data => data.mobAID == createTargetList[ranIndex].mobAID);
         MobCreateData mobCreateData = mobCreateDataList[index];
 
-        MobAData mpbaData = CSVDataManager.Instance.mobATable.GetData(mobCreateData.mobAID);
-        MobBData mpbbData = CSVDataManager.Instance.mobBTable.GetData(mobCreateData.mobBID);
+        MobAData mobaData = CSVDataManager.Instance.mobATable.GetData(mobCreateData.mobAID);
+        MobBData mobbData = CSVDataManager.Instance.mobBTable.GetData(mobCreateData.mobBID);
 
         mobCreateData.currentNumber -= 1;
 
-        chaManager.CreateEnumy(mpbaData, mpbbData , EnumyDieEventOn);
+        chaManager.CreateEnumy(mobaData, mobbData , EnumyDieEventOn);
 
         //모든 몬스터를 다 생성했다면 생성 로직 초기화
         if (GetCreateTargetList().Count == 0)
@@ -115,8 +126,51 @@ public class InGameController : MonoBehaviour
 
     void EnumyDieEventOn(EnumyAI enumyAI)
     {
-        bossOnCurrentCnt++;
-        stageSlider.value = bossOnCurrentCnt / (float)bossOnMaxCnt;
+        if (bossOn == false)
+        {
+            bossOnCurrentCnt++;
+            stageSlider.value = bossOnCurrentCnt / (float)bossOnMaxCnt;
+
+            BossOnCheck();
+        }
+        else
+        {
+            bossOn = false;
+            GameDataManager.Instance.selectStageId++;
+            StageSet();
+        }
+    }
+
+    public void BossOnCheck() 
+    {
+        if (bossOn == false)
+        {
+            bool bossOnCheck = bossOnCurrentCnt >= mapBData.BossButtonNo;
+
+            if (bossOnCheck && autoBossToggle.isOn)
+            {
+                BossStageOn();
+            }
+            else 
+            {
+                BossOnBtnActiveOn();
+            }
+
+        }
+        else
+        {
+
+        }
+    }
+
+    void BossOnBtnActiveOn()
+    {
+        bool activeOn = bossOnCurrentCnt >= mapBData.BossButtonNo;
+        bossOnBtn.interactable = activeOn;
+        bossOnBtn.image.sprite = bossOn ? bossOnBtnSpriteList[1] : bossOnBtnSpriteList[0];  
+
+        Text btnText = bossOnBtn.transform.GetComponentInChildren<Text>();       
+        btnText.text = bossOn ? "도주" : "보스도전";
     }
 
     List<MobCreateData> GetCreateTargetList()
@@ -128,6 +182,25 @@ public class InGameController : MonoBehaviour
     void SliderSet() 
     {
         stageSlider.value = 0;
+    }
+
+    public void BossStageOn()
+    {
+        if (bossOn)
+        {
+
+        }
+        else
+        {
+            bossOn = true;
+            BossOnBtnActiveOn();
+
+            chaManager.AllRemoveEnumy();
+
+            MobAData mobaData = CSVDataManager.Instance.mobATable.GetData(mapBData.Bossa1);
+            BossBData bossBData = CSVDataManager.Instance.bossBTable.GetData(mapBData.Bossb1);
+            chaManager.CreateBoss(mobaData, bossBData, EnumyDieEventOn);
+        }
     }
 }
 
