@@ -1789,7 +1789,7 @@ GameObject:
   m_Component:
   - component: {fileID: 304329262416408669}
   - component: {fileID: 8430500668241003609}
-  - component: {fileID: 8481976668483754228}
+  - component: {fileID: 3854962088442116486}
   m_Layer: 0
   m_Name: head_eyes_open
   m_TagString: Untagged
@@ -1862,7 +1862,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8481976668483754228
+--- !u!114 &3854962088442116486
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

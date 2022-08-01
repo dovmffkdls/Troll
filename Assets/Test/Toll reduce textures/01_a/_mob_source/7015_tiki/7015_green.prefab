@@ -616,7 +616,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5185201462772486553}
   - component: {fileID: 6155763120589382440}
-  - component: {fileID: 7456294632058973721}
+  - component: {fileID: 4443559308300718777}
   m_Layer: 0
   m_Name: club_01
   m_TagString: Untagged
@@ -689,7 +689,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7456294632058973721
+--- !u!114 &4443559308300718777
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1759,7 +1759,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8869377417956403410}
   - component: {fileID: 8740028640796507834}
-  - component: {fileID: 3777353099405003718}
+  - component: {fileID: 6228247978135427190}
   m_Layer: 0
   m_Name: back_foot_000
   m_TagString: Untagged
@@ -1832,7 +1832,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3777353099405003718
+--- !u!114 &6228247978135427190
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2217,7 +2217,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6189051215322151992}
   - component: {fileID: 6612666945583938809}
-  - component: {fileID: 9168289395386250562}
+  - component: {fileID: 8255508106285240302}
   m_Layer: 0
   m_Name: back_hand_closed_000
   m_TagString: Untagged
@@ -2290,7 +2290,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &9168289395386250562
+--- !u!114 &8255508106285240302
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

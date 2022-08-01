@@ -514,7 +514,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5118506053836360537}
   - component: {fileID: 9188211589982330127}
-  - component: {fileID: 377240664999557407}
+  - component: {fileID: 2957073762105291917}
   m_Layer: 0
   m_Name: right_eye_open
   m_TagString: Untagged
@@ -587,7 +587,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &377240664999557407
+--- !u!114 &2957073762105291917
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -739,7 +739,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6640339951614373612}
   - component: {fileID: 1283958824335932977}
-  - component: {fileID: 2006271011188986114}
+  - component: {fileID: 5049262162321666708}
   m_Layer: 0
   m_Name: left_eye_open
   m_TagString: Untagged
@@ -812,7 +812,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2006271011188986114
+--- !u!114 &5049262162321666708
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1729,7 +1729,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8882184390974482274}
   - component: {fileID: 1922340793236457811}
-  - component: {fileID: 6008200817116934518}
+  - component: {fileID: 1008993036789116628}
   m_Layer: 0
   m_Name: status_effect_01__KO_001
   m_TagString: Untagged
@@ -1802,7 +1802,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6008200817116934518
+--- !u!114 &1008993036789116628
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2872,7 +2872,7 @@ GameObject:
   m_Component:
   - component: {fileID: 237213253035143428}
   - component: {fileID: 5677022856911098672}
-  - component: {fileID: 1903775435897546612}
+  - component: {fileID: 6681604977206611585}
   m_Layer: 0
   m_Name: tail_01
   m_TagString: Untagged
@@ -2945,7 +2945,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1903775435897546612
+--- !u!114 &6681604977206611585
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

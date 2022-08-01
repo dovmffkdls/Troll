@@ -896,7 +896,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5890919668586292292}
   - component: {fileID: 2566385358764258778}
-  - component: {fileID: 2809958978402724562}
+  - component: {fileID: 157594487597966295}
   m_Layer: 0
   m_Name: tail_straight
   m_TagString: Untagged
@@ -969,7 +969,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2809958978402724562
+--- !u!114 &157594487597966295
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1128,7 +1128,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2355053347957166088}
   - component: {fileID: 853391859678805348}
-  - component: {fileID: 3171075242662296889}
+  - component: {fileID: 4518100114870031845}
   m_Layer: 0
   m_Name: eyes_open_000
   m_TagString: Untagged
@@ -1201,7 +1201,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3171075242662296889
+--- !u!114 &4518100114870031845
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

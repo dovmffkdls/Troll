@@ -40,7 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3697706309249611555}
   - component: {fileID: 2671559650838340209}
-  - component: {fileID: 2646593443687014189}
+  - component: {fileID: 3226033611457006276}
   m_Layer: 0
   m_Name: eye_open_000
   m_TagString: Untagged
@@ -113,7 +113,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2646593443687014189
+--- !u!114 &3226033611457006276
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1591,7 +1591,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6021169956435706070}
   - component: {fileID: 2993273096748224183}
-  - component: {fileID: 1675120708481763113}
+  - component: {fileID: 5076990867229986833}
   m_Layer: 0
   m_Name: eye_open
   m_TagString: Untagged
@@ -1664,7 +1664,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1675120708481763113
+--- !u!114 &5076990867229986833
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2381,7 +2381,7 @@ GameObject:
   m_Component:
   - component: {fileID: 116426789833500129}
   - component: {fileID: 831364431542002090}
-  - component: {fileID: 6379884857672791012}
+  - component: {fileID: 8360374925857766237}
   m_Layer: 0
   m_Name: status_effect_01__KO_001
   m_TagString: Untagged
@@ -2454,7 +2454,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6379884857672791012
+--- !u!114 &8360374925857766237
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

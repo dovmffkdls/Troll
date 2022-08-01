@@ -1019,7 +1019,7 @@ GameObject:
   m_Component:
   - component: {fileID: 328873939570197941}
   - component: {fileID: 1020881058975570298}
-  - component: {fileID: 654953896186460963}
+  - component: {fileID: 4547420211567241427}
   m_Layer: 0
   m_Name: right-eye-open
   m_TagString: Untagged
@@ -1092,7 +1092,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &654953896186460963
+--- !u!114 &4547420211567241427
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1118,7 +1118,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2062365435565886626}
   - component: {fileID: 2392690944485193980}
-  - component: {fileID: 4635196324090598667}
+  - component: {fileID: 1730943763834038153}
   m_Layer: 0
   m_Name: left-eye-open
   m_TagString: Untagged
@@ -1191,7 +1191,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4635196324090598667
+--- !u!114 &1730943763834038153
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

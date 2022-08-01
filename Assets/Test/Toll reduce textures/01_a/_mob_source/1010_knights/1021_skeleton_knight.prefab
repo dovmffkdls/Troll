@@ -1501,7 +1501,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7140445049091019698}
   - component: {fileID: 992243718720208963}
-  - component: {fileID: 7818973370480362811}
+  - component: {fileID: 5229456662292684611}
   m_Layer: 0
   m_Name: foot_side_04_000
   m_TagString: Untagged
@@ -1574,7 +1574,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7818973370480362811
+--- !u!114 &5229456662292684611
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2696,7 +2696,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5203949074660339090}
   - component: {fileID: 7026369774428342}
-  - component: {fileID: 4280383513122403939}
+  - component: {fileID: 8523409162757517924}
   m_Layer: 0
   m_Name: top_hand_closed_06
   m_TagString: Untagged
@@ -2769,7 +2769,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4280383513122403939
+--- !u!114 &8523409162757517924
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2795,7 +2795,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2354191684571868521}
   - component: {fileID: 7343032043779259756}
-  - component: {fileID: 7040919956855314655}
+  - component: {fileID: 2570980516823567705}
   m_Layer: 0
   m_Name: status_effect_01__KO_001
   m_TagString: Untagged
@@ -2868,7 +2868,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7040919956855314655
+--- !u!114 &2570980516823567705
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
