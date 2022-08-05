@@ -14,12 +14,12 @@ namespace EditorTool.UGUIGenerator
             if (!Selection.gameObjects.ExIsEmpty() && 1 < Selection.gameObjects.Length)
                 EditorUtility.DisplayDialog("UGUIGenerator", "다중 선택은 지원되지 않습니다.\n1개만 선택해주세요.", "OK");
             else 
-                Generate(Selection.gameObjects.ExIsEmpty() ? GetMain() : Selection.gameObjects[0], setSortingOrder);
+                Generate(Selection.gameObjects.ExIsEmpty() ? GetMain() : Selection.gameObjects[0]);
         }
 
         private static GameObject GetMain() => GameObject.Find("Main");
 
-        private static void Generate(GameObject sourceObject, bool setSortingOrder)
+        private static void Generate(GameObject sourceObject)
         {
             var spriteRenderers = sourceObject.GetComponentsInChildren<SpriteRenderer>(true);
             foreach (var spriteRenderer in spriteRenderers)
