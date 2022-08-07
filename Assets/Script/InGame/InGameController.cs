@@ -202,6 +202,11 @@ public class InGameController : MonoBehaviour
             chaManager.CreateBoss(mobaData, bossBData, EnumyDieEventOn);
         }
     }
+
+    public void PCInfoBtnClickOn()
+    {
+        MenuController.Instance.CreatePopup(PopupEnum.pcinfo);
+    }
 }
 
 public class MobCreateData
