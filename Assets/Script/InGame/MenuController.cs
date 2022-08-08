@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MenuController : MonoBehaviour
+public class MenuController : MonoSingleton<MenuController>
 {
     int menuPanelStatus = 0;
 
@@ -23,16 +23,20 @@ public class MenuController : MonoBehaviour
 
     public void MenuBtnClick(int index)
     {
-        CreatePopup(index);
+        PopupEnum popupEnum = (PopupEnum)index;
+        CreatePopup(popupEnum);
     }
 
-    void CreatePopup(int index) 
+    public void CreatePopup(PopupEnum popupEnum) 
     {
         string popupName = string.Empty;
 
-        switch (index)
+        switch (popupEnum)
         {
-            case 0: popupName = "ShopPopup";
+            case PopupEnum.ShopPopup: popupName = "ShopPopup";
+                break;
+
+            case PopupEnum.pcinfo: popupName = "11_pcinfo";
                 break;
         }
 
@@ -46,7 +50,7 @@ public class MenuController : MonoBehaviour
 
         if (basePopup != null )
         {
-            Debug.LogWarning("creat 성공");
+            //Debug.LogWarning("creat 성공");
         }
         
     }
@@ -60,4 +64,10 @@ public class MenuController : MonoBehaviour
             menuPanelList[i].gameObject.SetActive(menuPanelStatus == i);
         }
     }
+}
+
+public enum PopupEnum
+{
+    ShopPopup = 0,
+    pcinfo = 11,
 }
