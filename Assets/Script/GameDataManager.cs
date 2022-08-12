@@ -9,6 +9,9 @@ public class GameDataManager : MonoSingleton<GameDataManager>
 
     public bool bgMove = false;
 
+    public int gem = 100;
+    public int gold = 1000;
+
     protected override void Init()
     {
         base.Init();
