@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PCUpTable : DataTable
@@ -9,6 +10,18 @@ public class PCUpTable : DataTable
     public void Load(List<PCUpData> dataList)
     {
         this.dataList = dataList;
+    }
+
+    public PCUpData GetData(int star, int id = 1)
+    {
+        if (star < 5)
+        {
+            return dataList.FirstOrDefault(data => data.Star == star);
+        }
+        else
+        {
+            return dataList.FirstOrDefault(data => data.Star == star && data.Id == id);
+        }
     }
 }
 

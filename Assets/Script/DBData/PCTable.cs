@@ -14,6 +14,11 @@ public class PCTable : DataTable
 
     public PCData GetData(int pcId , int star = 1)
     {
+        if (star == 0)
+        {
+            star = 1;
+        }
+
         return dataList.FirstOrDefault(data => data.PcGId == pcId && data.Star == star);
     }
 }
@@ -61,4 +66,21 @@ public class PCData
     public int BossDmgRate = 0;
     public int LvSafe = 0;
     public int LvLimit = 0;
+}
+
+public class PCUserData
+{
+    public int pcGId = 0;
+    public int star = 0;
+    public int grade = 0;
+    public int parts = 0;    
+
+    public PCUserData() { }
+    public PCUserData(int pcGId = 0, int star = 0, int parts = 0 ,int grade = 0 )
+    {
+        this.pcGId = pcGId;
+        this.star = star;
+        this.parts = parts;
+        this.grade = grade;
+    }
 }

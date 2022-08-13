@@ -5,15 +5,17 @@ using UnityEngine.UI;
 
 public class PCInfoController : BasePopup
 {
-    [SerializeField] Text gemText;
-    [SerializeField] Text goldText;
+    [SerializeField] AccountSetData accountSetData;
 
     [SerializeField] Image pcIcon;
     [SerializeField] List<Toggle> pcStarToggleList = new List<Toggle>();
 
     private PCData pcData;
-
-    private List<PCData> havePCDataList = new List<PCData>();
+    private PCUserData pcUserData;
+    
+    [SerializeField] Text pcPartsText;
+    [SerializeField] Text pcAbilityText_0;
+    [SerializeField] Text pcAbilityText_1;
 
     int selectIndex = 0;
 
@@ -24,50 +26,51 @@ public class PCInfoController : BasePopup
     // Start is called before the first frame update
     void Start()
     {
-        TempDataSet();
-
-        TextSet();
+        AccountDataSet();
         
         FaceIconSet();
 
         FaceIconClickOn(0);
     }
 
-    void TempDataSet()
+    void AccountDataSet()
     {
-        List<int> tempIdList = new List<int>()
-        {
-            1000,1001,1002,1100,1101,1102,1200,1201,1202
-        };
+        int accountID = 9000;
+        accountSetData.accountData = CSVDataManager.Instance.accountTable.GetData(accountID);
 
-        for (int i = 0; i < tempIdList.Count; i++)
-        {
-            int ranStar = Random.Range(1, 6);
-            PCData pcData = CSVDataManager.Instance.pcTable.GetData(tempIdList[i], ranStar);
-            havePCDataList.Add(pcData);
-        }
+        AccountData data = accountSetData.accountData;
 
-        selectIndex = 1;
+        accountSetData.accountGemText.text = GameDataManager.Instance.gem.ToString();
+        accountSetData.accountGoldText.text = GameDataManager.Instance.gold.ToString();
 
-        pcData = havePCDataList[selectIndex];
-    }
+        accountSetData.accountNameText.text = data.UserName;
 
-    void TextSet()
-    {
-        gemText.text = GameDataManager.Instance.gem.ToString();
-        goldText.text = GameDataManager.Instance.gold.ToString();
+        accountSetData.accountIDText.text = string.Format("# {0} ", data.AccountId);
+        accountSetData.accountLvText.text = data.Level.ToString();
+        accountSetData.accountRankingText.text = data.Ranking.ToString();
+        accountSetData.accountAtkText.text = data.Atk.ToString();
+        accountSetData.accountHPText.text = data.Hp.ToString();
+
+        accountSetData.accountCriText.text = string.Format("{0} %", data.CriRate);
     }
 
     void PCDataSet()
     {
+        pcUserData = GameDataManager.Instance.GetPCUserData(pcData.PcGId);
+
         for (int i = 0; i < pcStarToggleList.Count; i++)
         {
-            bool isOn = pcData.Star >= (i + 1);
+            bool isOn = pcUserData.star >= (i + 1);
 
             pcStarToggleList[i].isOn = isOn;
         }
 
         pcIcon.sprite = Resources.Load<Sprite>("UI/PCinfo/Charater/" + pcData.PcGId);
+
+        int maxPartsCnt = CSVDataManager.Instance.pcUpTable.GetData(pcUserData.star+1).NeedNumber;
+        string partsStr = string.Format("{0}/{1}", pcUserData.parts, maxPartsCnt);
+
+        pcPartsText.text = partsStr;
     }
 
     void FaceIconSet()
@@ -77,17 +80,24 @@ public class PCInfoController : BasePopup
             faceIcon.gameObject.SetActive(false);
         }
 
-        for (int i = faceIconList.Count; i < havePCDataList.Count; i++)
+        List<PCUserData> pcUserDataList = GameDataManager.Instance.pcUserDataList;
+
+        for (int i = faceIconList.Count; i < pcUserDataList.Count; i++)
         {
             PCInfo_FaceIcon faceIcon = Instantiate(faceIconPrefab, faceIconParant);
 
-            faceIcon.SetData(havePCDataList[i], i);
+            PCData tempPcData = CSVDataManager.Instance.pcTable.GetData(pcUserDataList[i].pcGId , pcUserDataList[i].star);
 
-            faceIcon.gameObject.SetActive(true);
+            if (tempPcData != null)
+            {
+                faceIcon.SetData(tempPcData, i);
 
-            faceIcon.clickEventOn += FaceIconClickOn;
+                faceIcon.gameObject.SetActive(true);
 
-            faceIconList.Add(faceIcon);
+                faceIcon.clickEventOn += FaceIconClickOn;
+
+                faceIconList.Add(faceIcon);
+            }
         }
     }
 
@@ -106,7 +116,8 @@ public class PCInfoController : BasePopup
             faceIconList[i].SelectOn(i == selectIndex);
         }
 
-        pcData = havePCDataList[selectIndex];
+        List<PCUserData> pcUserDataList = GameDataManager.Instance.pcUserDataList;
+        pcData = CSVDataManager.Instance.pcTable.GetData(pcUserDataList[selectIndex].pcGId);
 
         PCDataSet();
     }
@@ -118,4 +129,21 @@ public class PCInfoController : BasePopup
     }
 
 
+}
+
+[System.Serializable]
+public class AccountSetData
+{
+    public AccountData accountData;
+    public Text accountGemText;
+    public Text accountGoldText;
+    public Text accountNameText;
+    public Text accountIDText;
+    public Text accountLvText;
+    public Text accountRankingText;
+    public Text accountAtkText;
+    public Text accountHPText;
+    public Text accountDefText;
+    public Text accountCriText;
+    public Text accountInternalText;
 }

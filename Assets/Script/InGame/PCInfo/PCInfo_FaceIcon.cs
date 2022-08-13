@@ -8,6 +8,12 @@ public class PCInfo_FaceIcon : MonoBehaviour
 {
     int index = 0;
     public PCData pcData;
+    private PCUserData pcUserData;
+
+    [SerializeField] RectTransform pcPartsPanel;
+    [SerializeField] Text pcPartsText;
+
+    [SerializeField] RectTransform pcStarPanel;
     [SerializeField] List<Toggle> pcStarToggleList = new List<Toggle>();
     [SerializeField] Image faceIcon;
 
@@ -33,11 +39,27 @@ public class PCInfo_FaceIcon : MonoBehaviour
         this.pcData = pcData;
         faceIcon.sprite = Resources.Load<Sprite>("UI/PCinfo/Face/" + pcData.PcGId);
 
-        for (int i = 0; i < pcStarToggleList.Count; i++)
-        {
-            bool isOn = pcData.Star >= (i + 1);
+        pcUserData = GameDataManager.Instance.GetPCUserData(pcData.PcGId);
 
-            pcStarToggleList[i].isOn = isOn;
+        bool haveStar = pcUserData.star != 0;
+
+        pcPartsPanel.gameObject.SetActive(!haveStar);
+        pcStarPanel.gameObject.SetActive(haveStar);
+
+        if (haveStar == false)
+        {
+            int maxPartsCnt = CSVDataManager.Instance.pcUpTable.GetData(pcUserData.star + 1).NeedNumber;
+            string partsStr = string.Format("{0}/{1}", pcUserData.parts, maxPartsCnt);
+            pcPartsText.text = partsStr;
+        }
+        else
+        {
+            for (int i = 0; i < pcStarToggleList.Count; i++)
+            {
+                bool isOn = pcUserData.star >= (i + 1);
+
+                pcStarToggleList[i].isOn = isOn;
+            }
         }
     }
 

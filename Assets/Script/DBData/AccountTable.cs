@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class AccountTable : DataTable
@@ -9,6 +10,11 @@ public class AccountTable : DataTable
     public void Load(List<AccountData> dataList)
     {
         this.dataList = dataList;
+    }
+
+    public AccountData GetData(int accountId)
+    {
+        return dataList.FirstOrDefault(data => data.AccountId == accountId);
     }
 }
 
