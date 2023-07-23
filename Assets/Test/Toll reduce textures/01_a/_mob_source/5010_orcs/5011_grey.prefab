@@ -1205,7 +1205,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5631783900225225240}
   - component: {fileID: 3010483017231171926}
-  - component: {fileID: 2811979978242688497}
+  - component: {fileID: 4767022086769903322}
   m_Layer: 0
   m_Name: brown_leather_boot_foot_000
   m_TagString: Untagged
@@ -1278,7 +1278,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2811979978242688497
+--- !u!114 &4767022086769903322
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3206,7 +3206,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1790127990388107513}
   - component: {fileID: 219324018450572179}
-  - component: {fileID: 7884175997070586423}
+  - component: {fileID: 9038930734736927503}
   m_Layer: 0
   m_Name: face_eyes_open_light_green
   m_TagString: Untagged
@@ -3279,7 +3279,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7884175997070586423
+--- !u!114 &9038930734736927503
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

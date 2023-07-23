@@ -1073,7 +1073,7 @@ GameObject:
   m_Component:
   - component: {fileID: 265867430779022546}
   - component: {fileID: 8954028160264539489}
-  - component: {fileID: 7655973842237898884}
+  - component: {fileID: 7638635954203754050}
   m_Layer: 0
   m_Name: left_eye_open
   m_TagString: Untagged
@@ -1146,7 +1146,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7655973842237898884
+--- !u!114 &7638635954203754050
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2003,7 +2003,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3935462373980930254}
   - component: {fileID: 7850959441059110437}
-  - component: {fileID: 1517932080112478923}
+  - component: {fileID: 4593819879588753338}
   m_Layer: 0
   m_Name: foot_walking_green_000
   m_TagString: Untagged
@@ -2076,7 +2076,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1517932080112478923
+--- !u!114 &4593819879588753338
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2500,7 +2500,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3345965939316243006}
   - component: {fileID: 8390189357571124577}
-  - component: {fileID: 8034238788452628170}
+  - component: {fileID: 7033125019154571335}
   m_Layer: 0
   m_Name: right_eye_open
   m_TagString: Untagged
@@ -2573,7 +2573,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8034238788452628170
+--- !u!114 &7033125019154571335
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

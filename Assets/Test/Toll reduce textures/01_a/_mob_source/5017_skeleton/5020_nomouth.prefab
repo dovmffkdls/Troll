@@ -516,7 +516,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4281246012313266875}
   - component: {fileID: 403508272346559743}
-  - component: {fileID: 6215982554146857054}
+  - component: {fileID: 1330078051929339416}
   m_Layer: 0
   m_Name: top_hand
   m_TagString: Untagged
@@ -589,7 +589,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6215982554146857054
+--- !u!114 &1330078051929339416
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1364,7 +1364,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9137094406276386466}
   - component: {fileID: 2448716658392159786}
-  - component: {fileID: 1940191680712718582}
+  - component: {fileID: 2533120509597011490}
   m_Layer: 0
   m_Name: foot_000
   m_TagString: Untagged
@@ -1437,7 +1437,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1940191680712718582
+--- !u!114 &2533120509597011490
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

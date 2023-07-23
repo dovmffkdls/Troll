@@ -666,7 +666,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7042845274073703797}
   - component: {fileID: 53618569528795253}
-  - component: {fileID: 2752542932073029469}
+  - component: {fileID: 8429313813154958514}
   m_Layer: 0
   m_Name: cloak_standing_01
   m_TagString: Untagged
@@ -739,7 +739,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2752542932073029469
+--- !u!114 &8429313813154958514
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1220,7 +1220,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5764232831732301180}
   - component: {fileID: 7840123955953502100}
-  - component: {fileID: 6313713772600332027}
+  - component: {fileID: 3211150545933069385}
   m_Layer: 0
   m_Name: foot_side_04_000
   m_TagString: Untagged
@@ -1293,7 +1293,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6313713772600332027
+--- !u!114 &3211150545933069385
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2774,7 +2774,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1565084522103133072}
   - component: {fileID: 6754506062501398926}
-  - component: {fileID: 6071417829050348006}
+  - component: {fileID: 1957299879863063648}
   m_Layer: 0
   m_Name: top_hand_closed_06
   m_TagString: Untagged
@@ -2847,7 +2847,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6071417829050348006
+--- !u!114 &1957299879863063648
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3569,7 +3569,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3178161541950935146}
   - component: {fileID: 1882675076740934297}
-  - component: {fileID: 5417008097065879403}
+  - component: {fileID: 8886929766317435031}
   m_Layer: 0
   m_Name: status_effect_01__KO_001
   m_TagString: Untagged
@@ -3642,7 +3642,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5417008097065879403
+--- !u!114 &8886929766317435031
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

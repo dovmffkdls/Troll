@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8222057470841933725}
   - component: {fileID: 5840922548241038786}
-  - component: {fileID: 6208266296403399090}
+  - component: {fileID: 4875526976473772089}
   m_Layer: 0
   m_Name: wheel_01
   m_TagString: Untagged
@@ -83,7 +83,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6208266296403399090
+--- !u!114 &4875526976473772089
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -426,7 +426,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5562590427428229439}
   - component: {fileID: 287729935186057575}
-  - component: {fileID: 6718207086061842353}
+  - component: {fileID: 4602152817361872603}
   m_Layer: 0
   m_Name: machine_explode_01
   m_TagString: Untagged
@@ -499,7 +499,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6718207086061842353
+--- !u!114 &4602152817361872603
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

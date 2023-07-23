@@ -1455,7 +1455,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2303090224338860892}
   - component: {fileID: 7534299750951054746}
-  - component: {fileID: 6445028870323116652}
+  - component: {fileID: 2204221886360614252}
   m_Layer: 0
   m_Name: light_off
   m_TagString: Untagged
@@ -1528,7 +1528,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6445028870323116652
+--- !u!114 &2204221886360614252
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2109,7 +2109,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3917836972834069259}
   - component: {fileID: 1940976330612464169}
-  - component: {fileID: 8634901692125716314}
+  - component: {fileID: 6949001978707032712}
   m_Layer: 0
   m_Name: light_on
   m_TagString: Untagged
@@ -2182,7 +2182,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8634901692125716314
+--- !u!114 &6949001978707032712
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2433,7 +2433,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8721542163992999139}
   - component: {fileID: 1644391951221226294}
-  - component: {fileID: 1012464130942499092}
+  - component: {fileID: 6714616194712929286}
   m_Layer: 0
   m_Name: machine_explode_01
   m_TagString: Untagged
@@ -2506,7 +2506,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1012464130942499092
+--- !u!114 &6714616194712929286
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
