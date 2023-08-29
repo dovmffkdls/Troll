@@ -332,7 +332,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4321680530026907171}
   - component: {fileID: 5357469166202810033}
-  - component: {fileID: 3006828029985376782}
+  - component: {fileID: 2604198268562701054}
   m_Layer: 0
   m_Name: right_eye_open_yellow
   m_TagString: Untagged
@@ -405,7 +405,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3006828029985376782
+--- !u!114 &2604198268562701054
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1510,7 +1510,7 @@ GameObject:
   m_Component:
   - component: {fileID: 964725201622893713}
   - component: {fileID: 5898684356992032749}
-  - component: {fileID: 3723026400936200084}
+  - component: {fileID: 1945346964806361091}
   m_Layer: 0
   m_Name: left_eye_open_yellow
   m_TagString: Untagged
@@ -1583,7 +1583,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3723026400936200084
+--- !u!114 &1945346964806361091
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2588,7 +2588,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9134493242230892879}
   - component: {fileID: 982854757529261066}
-  - component: {fileID: 2071105594818932430}
+  - component: {fileID: 1091901497664380058}
   m_Layer: 0
   m_Name: muzzle_1
   m_TagString: Untagged
@@ -2661,7 +2661,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2071105594818932430
+--- !u!114 &1091901497664380058
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

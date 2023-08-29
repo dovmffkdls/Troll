@@ -628,7 +628,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7950980318742200314}
   - component: {fileID: 8825901506258299525}
-  - component: {fileID: 8836999415876522088}
+  - component: {fileID: 6154758613939180257}
   m_Layer: 0
   m_Name: head_eyes_open
   m_TagString: Untagged
@@ -701,7 +701,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8836999415876522088
+--- !u!114 &6154758613939180257
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -727,7 +727,7 @@ GameObject:
   m_Component:
   - component: {fileID: 160002061909628075}
   - component: {fileID: 4273611110028918904}
-  - component: {fileID: 2485653747550620363}
+  - component: {fileID: 4079757804584348911}
   m_Layer: 0
   m_Name: foot
   m_TagString: Untagged
@@ -800,7 +800,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2485653747550620363
+--- !u!114 &4079757804584348911
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1648,7 +1648,7 @@ GameObject:
   m_Component:
   - component: {fileID: 136411747391714526}
   - component: {fileID: 993049771522591853}
-  - component: {fileID: 5791897123243831429}
+  - component: {fileID: 6858234987176085661}
   m_Layer: 0
   m_Name: foot_001
   m_TagString: Untagged
@@ -1721,7 +1721,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5791897123243831429
+--- !u!114 &6858234987176085661
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

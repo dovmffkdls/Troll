@@ -374,7 +374,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5731254330984650739}
   - component: {fileID: 3570481399655593573}
-  - component: {fileID: 4940921470624991738}
+  - component: {fileID: 7826667867161577306}
   m_Layer: 0
   m_Name: back_hand_closed_000
   m_TagString: Untagged
@@ -447,7 +447,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4940921470624991738
+--- !u!114 &7826667867161577306
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

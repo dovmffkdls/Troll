@@ -4379,7 +4379,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4175053386165731730}
   - component: {fileID: 6686840766324240332}
-  - component: {fileID: 4622730111491728763}
+  - component: {fileID: 2140072751583882529}
   m_Layer: 0
   m_Name: rise_01_000
   m_TagString: Untagged
@@ -4452,7 +4452,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4622730111491728763
+--- !u!114 &2140072751583882529
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

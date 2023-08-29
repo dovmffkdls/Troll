@@ -756,7 +756,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6434459676470563253}
   - component: {fileID: 5456867197217918307}
-  - component: {fileID: 5055196851661068773}
+  - component: {fileID: 6610404785418933530}
   m_Layer: 0
   m_Name: status_effect_01__KO_001
   m_TagString: Untagged
@@ -829,7 +829,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5055196851661068773
+--- !u!114 &6610404785418933530
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4056,7 +4056,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9173428343485331996}
   - component: {fileID: 6984726136082862245}
-  - component: {fileID: 2448106254057889000}
+  - component: {fileID: 710871477809721194}
   m_Layer: 0
   m_Name: top_eye_open
   m_TagString: Untagged
@@ -4129,7 +4129,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2448106254057889000
+--- !u!114 &710871477809721194
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

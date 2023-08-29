@@ -276,7 +276,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4100555173458015984}
   - component: {fileID: 4484757274239033397}
-  - component: {fileID: 178580258967816651}
+  - component: {fileID: 3640142027387137077}
   m_Layer: 0
   m_Name: back_hand_01
   m_TagString: Untagged
@@ -349,7 +349,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &178580258967816651
+--- !u!114 &3640142027387137077
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1087,7 +1087,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7048707679239743771}
   - component: {fileID: 754228595692701970}
-  - component: {fileID: 8832079053077066797}
+  - component: {fileID: 1460652474576755661}
   m_Layer: 0
   m_Name: eye_open
   m_TagString: Untagged
@@ -1160,7 +1160,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8832079053077066797
+--- !u!114 &1460652474576755661
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2349,7 +2349,7 @@ GameObject:
   m_Component:
   - component: {fileID: 449302989603512969}
   - component: {fileID: 465041859296933116}
-  - component: {fileID: 7779483105187035342}
+  - component: {fileID: 737128334102558580}
   m_Layer: 0
   m_Name: eye_open_000
   m_TagString: Untagged
@@ -2422,7 +2422,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7779483105187035342
+--- !u!114 &737128334102558580
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

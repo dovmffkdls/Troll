@@ -2893,7 +2893,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8759884713187186216}
   - component: {fileID: 5049096068234510660}
-  - component: {fileID: 846231473471277810}
+  - component: {fileID: 2051183723798713802}
   m_Layer: 0
   m_Name: idle_red
   m_TagString: Untagged
@@ -2966,7 +2966,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &846231473471277810
+--- !u!114 &2051183723798713802
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
